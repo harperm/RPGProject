@@ -1,6 +1,6 @@
 public class Character
 {
-	private String name, role;
+	private String name, role2;
 	private int level, experience;
 	private int health, maxHealth;
 	private int mana, maxMana;
