@@ -1,6 +1,6 @@
 public class Enemy extends Character
 {
-	public Enemy(String name, String role, int level, int health, 
+	public Enemy(String name, String role, int level, int health1, 
 				int mana, int strength, int defense, int speed, 
 				String status, String attack0, String attack1, String attack2)
 	{
