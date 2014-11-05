@@ -23,6 +23,7 @@ public class Character
 		if(role.equals("warrior")){
 			this.maxMana = 0;
 			this.strength = 100;
+			this.defense = 100;
 			this.speed = 30;
 			this.attacks[0] = "slash";
 			this.attacks[1] = "charge";
@@ -32,6 +33,7 @@ public class Character
 		if(role.equals("mage")){
 			this.maxMana = 300;
 			this.strength = 100;
+			this.defense = 60;
 			this.speed = 60;
 			this.attacks[0] = "fireball";
 			this.attacks[1] = "frost";
@@ -41,6 +43,7 @@ public class Character
 		if(role.equals("thief")){
 			this.maxMana = 0;
 			this.strength = 80;
+			this.defense = 60;
 			this.speed = 100;
 			this.attacks[0] = "stab";
 			this.attacks[1] = "stun";
@@ -57,14 +60,14 @@ public class Character
 	public void setLevel(int newLevel){ this.level = newLevel; }
 	public void setExperience(int newExperience){ this.experience = newExperience; }
 	public void setHealth(int newHealth){ this.health = newHealth; }
-	public void setMaxHealth(int newMaxHealth){ this.maxHealth = maxHealth; }
+	public void setMaxHealth(int newMaxHealth){ this.maxHealth = newMaxHealth; }
 	public void setMana(int newMana){ this.mana = newMana; }
-	public void setMaxMana(int newMaxMana){ this.maxMana = maxMana; }
+	public void setMaxMana(int newMaxMana){ this.maxMana = newMaxMana; }
 	public void setStrength(int newStrength){ this.strength = newStrength; }
 	public void setDefense(int newDefense){ this.defense = newDefense; }
 	public void setSpeed(int newSpeed){ this.speed = newSpeed; }
 	public void setStatus(String newStatus){ this.status = newStatus; }
-	public void setAttacks(String[] newAttacks){ this.attacks = attacks; }
+	public void setAttacks(String[] newAttacks){ this.attacks = newAttacks; }
 	
 	//getters
 	public String getName(){ return name; }

@@ -9,7 +9,9 @@ public class Enemy extends Character
 		setRole(role);
 		setLevel(level);
 		setHealth(health);
+		setMaxHealth(health);
 		setMana(mana);
+		setMaxMana(mana);
 		setStrength(strength);
 		setDefense(defense);
 		setSpeed(speed);
