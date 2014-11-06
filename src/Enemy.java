@@ -17,6 +17,8 @@ public class Enemy extends Character
 		setSpeed(speed);
 		setStatus(status);
 		String[] attacks = {attack0,attack1,attack2};
-		setAttacks(attacks);
+		
+		//if all attacks are null, default adds the base role attacks to the enemy
+		if(attacks[0]!=null && attacks[1]!=null && attacks[2]!=null){ setAttacks(attacks); }
 	}
 }

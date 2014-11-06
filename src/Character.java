@@ -6,9 +6,8 @@ public class Character
 	private int mana, maxMana;
 	private int strength, defense, speed;
 	private String status;
-	private String attack0, attack1, attack2;
 	private String attacks[] = new String[3];
-	private String dialog[] = new String[5];
+	private String dialogs[] = new String[5];
 	
 	//player
 	public Character(String name, String role)
@@ -68,6 +67,7 @@ public class Character
 	public void setSpeed(int newSpeed){ this.speed = newSpeed; }
 	public void setStatus(String newStatus){ this.status = newStatus; }
 	public void setAttacks(String[] newAttacks){ this.attacks = newAttacks; }
+	public void setDialogs(String [] newDialogs){ this.dialogs = newDialogs; }
 	
 	//getters
 	public String getName(){ return name; }
@@ -83,47 +83,45 @@ public class Character
 	public int getSpeed(){ return speed; }
 	public String getStatus(){ return status; }
 	public String[] getAttacks(){ return attacks; }
+	public String[] getDialogs(){ return dialogs; }
 	
+	public static void printCharacter(Character test)
+	{
+		System.out.println("Name: "+test.getName());
+		System.out.println("Role: "+test.getRole());
+		System.out.println("Level: "+test.getLevel());
+		System.out.println("Experience: "+test.getExperience());
+		System.out.println("Health: "+test.getHealth());
+		System.out.println("Max Health: "+test.getMaxHealth());
+		System.out.println("Mana: "+test.getMana());
+		System.out.println("Max Mana: "+test.getMaxMana());
+		System.out.println("Strength: "+test.getStrength());
+		System.out.println("Defense: "+test.getDefense());
+		System.out.println("Speed: "+test.getSpeed());
+		System.out.println("Status: "+test.getStatus());
+		for(int i=0;i<test.getAttacks().length;i++){
+			System.out.println("Attack"+i+": "+test.getAttacks()[i]+" ");
+		}
+		for(int i=0;i<test.getDialogs().length;i++){
+			System.out.println("Dialog"+i+": "+test.getDialogs()[i]+" ");
+		}
+	}
 	
 	public static void main(String[] args)
 	{
 		Character test = new Character("link","warrior");
-		System.out.println("Name: "+test.name);
-		System.out.println("Role: "+test.role);
-		System.out.println("Level: "+test.level);
-		System.out.println("Experience: "+test.experience);
-		System.out.println("Health: "+test.health);
-		System.out.println("Max Health: "+test.maxHealth);
-		System.out.println("Mana: "+test.mana);
-		System.out.println("Max Mana: "+test.maxMana);
-		System.out.println("Strength: "+test.strength);
-		System.out.println("Defense: "+test.defense);
-		System.out.println("Speed: "+test.speed);
-		System.out.println("Status: "+test.status);
-		System.out.print("Attacks: ");
-		for(int i=0;i<test.attacks.length;i++){
-			System.out.print(test.attacks[i]+" ");
-		}
+		printCharacter(test);
 		
 		System.out.println();
 		System.out.println();
 		
 		Enemy test2 = new Enemy("orc","warrior",3,500,150,0,80,60,null,null,null,null);
-		System.out.println("Name: "+test2.getName());
-		System.out.println("Role: "+test2.getRole());
-		System.out.println("Level: "+test2.getLevel());
-		System.out.println("Experience: "+test2.getExperience());
-		System.out.println("Health: "+test2.getHealth());
-		System.out.println("Max Health: "+test2.getMaxHealth());
-		System.out.println("Mana: "+test2.getMana());
-		System.out.println("Max Mana: "+test2.getMaxMana());
-		System.out.println("Strength: "+test2.getStrength());
-		System.out.println("Defense: "+test2.getDefense());
-		System.out.println("Speed: "+test2.getSpeed());
-		System.out.println("Status: "+test2.getStatus());
-		System.out.print("Attacks: ");
-		for(int i=0;i<test2.getAttacks().length;i++){
-			System.out.print(test2.getAttacks()[i]+" ");
-		}
+		printCharacter(test2);
+		
+		System.out.println();
+		System.out.println();
+		
+		NPC test3 = new NPC("grand wizard","npc","hello","welcome, adventurer","i am here to guide you",null,null);
+		printCharacter(test3);
 	}
 }
