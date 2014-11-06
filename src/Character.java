@@ -8,6 +8,7 @@ public class Character
 	private String status;
 	private String attacks[] = new String[3];
 	private String dialogs[] = new String[5];
+	private int money;
 	
 	//player
 	public Character(String name, String role)
@@ -51,6 +52,7 @@ public class Character
 		
 		this.mana = maxMana;
 		this.status = null;
+		this.money = 0;
 	}
 	
 	//setters
@@ -68,6 +70,7 @@ public class Character
 	public void setStatus(String newStatus){ this.status = newStatus; }
 	public void setAttacks(String[] newAttacks){ this.attacks = newAttacks; }
 	public void setDialogs(String [] newDialogs){ this.dialogs = newDialogs; }
+	public void setMoney(int newMoney){ this.money = newMoney; }
 	
 	//getters
 	public String getName(){ return name; }
@@ -84,6 +87,7 @@ public class Character
 	public String getStatus(){ return status; }
 	public String[] getAttacks(){ return attacks; }
 	public String[] getDialogs(){ return dialogs; }
+	public int getMoney(){ return money; }
 	
 	public static void printCharacter(Character test)
 	{
@@ -105,23 +109,27 @@ public class Character
 		for(int i=0;i<test.getDialogs().length;i++){
 			System.out.println("Dialog"+i+": "+test.getDialogs()[i]+" ");
 		}
+		System.out.println("Money: "+test.getMoney());
+		System.out.println();
+		System.out.println();
 	}
 	
 	public static void main(String[] args)
 	{
-		Character test = new Character("link","warrior");
-		printCharacter(test);
-		
-		System.out.println();
-		System.out.println();
-		
-		Enemy test2 = new Enemy("orc","warrior",3,500,150,0,80,60,null,null,null,null);
+		//Character(name,role)
+		Character test0 = new Character("lonk","warrior");
+		Character test1 = new Character("bob","mage");
+		Character test2 = new Character("zio","thief");
+		printCharacter(test0);
+		printCharacter(test1);
 		printCharacter(test2);
 		
-		System.out.println();
-		System.out.println();
-		
-		NPC test3 = new NPC("grand wizard","npc","hello","welcome, adventurer","i am here to guide you",null,null);
+		//Enemy(name,role,level,health,mana,strength,defense,speed,status,attack0,attack1,attack2
+		Enemy test3 = new Enemy("orc","warrior",3,500,150,0,80,60,null,null,null,null);
 		printCharacter(test3);
+		
+		//NPC(name,role,dialog0,dialog1,dialog2,dialog3,dialog4
+		NPC test4 = new NPC("grand wizard","npc","hello","welcome, adventurer","i am here to guide you",null,null);
+		printCharacter(test4);
 	}
 }
