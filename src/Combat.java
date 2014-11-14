@@ -1,8 +1,11 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Combat
 {
-	public static boolean hitChance(Character attacker, Enemy target)
+	static Scanner keyboard = new Scanner(System.in);
+	
+	public static boolean hitChance(Character attacker, Character target)
 	{
 		Random rand = new Random();
 		int randomNum = rand.nextInt(100)+1;
@@ -21,6 +24,18 @@ public class Combat
 		}
 	}
 	
+	public static int attack(String[] attack)
+	{
+		for(int i=0;i<attack.length;i++){
+			System.out.println((i+1)+". "+attack[i]);
+		}
+		
+		System.out.print("Enter attack number: ");
+		int choice = keyboard.nextInt();
+		
+		return choice;
+	}
+	
 	public static void main(String[] args)
 	{
 		Character player = new Character("link","warrior");
@@ -28,13 +43,7 @@ public class Combat
 		
 		System.out.println(hitChance(player, enemy));
 		System.out.println();
-		System.out.println(hitChance(player, enemy));
-		System.out.println();
-		System.out.println(hitChance(player, enemy));
-		System.out.println();
-		System.out.println(hitChance(player, enemy));
-		System.out.println();
-		System.out.println(hitChance(player, enemy));
-		System.out.println();
+		
+		attack(player.getAttacks());
 	}
 }
