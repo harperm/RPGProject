@@ -14,7 +14,6 @@ public class RPGTest
 {
 	public static void main(String[] args)
 	{
-		
 		Character test0 = new Character("lonk","warrior");
 		Character test1 = new Character("bob","mage");
 		Character test2 = new Character("zio","thief");
@@ -26,7 +25,7 @@ public class RPGTest
 		new Combat(test0, test4);
 		System.out.println();
 		
-		System.out.println("You completed the game");
+		System.out.println("You completed the game!");
 		System.out.println("Congradulations!");
 	}
 }

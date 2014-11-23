@@ -12,17 +12,17 @@ public class Combat
 		System.out.println("A "+enemy.getRole()+" "+enemy.getName()+" has appeared!");
 		System.out.println();
 		
-		System.out.println(player.getName()+" HP: "+player.getHealth());
-		System.out.println(enemy.getName()+" HP: "+enemy.getHealth());
-		System.out.println();
+		printHPs(player, enemy);
 		
 		while(true){
 			if(this.turn){
 				attack(player, enemy);
+				System.out.println();
 			}else{
 				attack(enemy, player);
+				System.out.println();
+				printHPs(player, enemy);
 			}
-			System.out.println();
 			
 			this.turn = !this.turn;
 			
@@ -34,9 +34,7 @@ public class Combat
 				break;
 			}
 			
-			System.out.println("Player HP: "+player.getHealth());
-			System.out.println("Enemy HP: "+enemy.getHealth());
-			System.out.println();
+			
 		}
 	}
 	
@@ -88,7 +86,7 @@ public class Combat
 	
 	public int damage(Character target, int choice)
 	{
-		//set to attack[i]*10 until i fix Character for assigning damage to attacks
+		//set to choice*10 until Equipment is done
 		int damageAmount = choice*10; 
 		target.setHealth(target.getHealth()-damageAmount);
 		
@@ -100,6 +98,7 @@ public class Combat
 		player.setExperience(player.getExperience()+(enemy.getLevel()*30));
 		player.setHealth(player.getMaxHealth());
 		System.out.println("You won the battle!");
+		System.out.println("Press Enter to continue");
 		keyboard.nextLine();
 		keyboard.nextLine();
 	}
@@ -109,5 +108,11 @@ public class Combat
 		System.out.println("You are dead.");
 		System.out.println("Game Over");
 		System.exit(0);
+	}
+	
+	public void printHPs(Character player, Character enemy){
+		System.out.println("Player HP: "+player.getHealth());
+		System.out.println("Enemy HP: "+enemy.getHealth());
+		System.out.println();
 	}
 }
