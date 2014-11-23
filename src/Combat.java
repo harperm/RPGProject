@@ -33,8 +33,6 @@ public class Combat
 				victory(player, enemy);
 				break;
 			}
-			
-			
 		}
 	}
 	
