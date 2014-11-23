@@ -9,8 +9,11 @@ public class Combat
 	
 	public Combat(Character player, Enemy enemy)
 	{
-		System.out.println("Player HP: "+player.getHealth());
-		System.out.println("Enemy HP: "+enemy.getHealth());
+		System.out.println("A "+enemy.getRole()+" "+enemy.getName()+" has appeared!");
+		System.out.println();
+		
+		System.out.println(player.getName()+" HP: "+player.getHealth());
+		System.out.println(enemy.getName()+" HP: "+enemy.getHealth());
 		System.out.println();
 		
 		while(true){
@@ -19,6 +22,7 @@ public class Combat
 			}else{
 				attack(enemy, player);
 			}
+			System.out.println();
 			
 			this.turn = !this.turn;
 			
@@ -26,7 +30,7 @@ public class Combat
 				death();
 				break;
 			}else if(enemy.getHealth()<=0){
-				victory();
+				victory(player, enemy);
 				break;
 			}
 			
@@ -60,18 +64,20 @@ public class Combat
 			}while(choice>attacks.length || choice<0);
 		}
 		
+		System.out.println(attacker.getName()+" used "+attacker.getAttacks()[choice-1]);
+		
 		if(hitChance(attacker, target)){
-			System.out.println("Hit: "+attacker.getAttacks()[choice-1]);
-			damage(target, choice);
+			System.out.println(attacker.getAttacks()[choice-1]+" landed");
+			System.out.println("Damage dealt: "+damage(target, choice));
 		}else{
-			System.out.println("Miss");
+			System.out.println(attacker.getAttacks()[choice-1]+" missed");
 		}
 	}
 	
 	public boolean hitChance(Character attacker, Character target)
 	{
 		int randomHit = rand.nextInt(100)+1;
-		int speedBonus = (attacker.getSpeed() - target.getSpeed())/5;
+		int speedBonus = (attacker.getSpeed()-target.getSpeed())/5;
 		
 		if(randomHit+speedBonus >= 50){
 			return true;
@@ -80,26 +86,28 @@ public class Combat
 		}
 	}
 	
-	public void damage(Character target, int choice)
+	public int damage(Character target, int choice)
 	{
-		target.setHealth(target.getHealth()-(choice*10));
+		//set to attack[i]*10 until i fix Character for assigning damage to attacks
+		int damageAmount = choice*10; 
+		target.setHealth(target.getHealth()-damageAmount);
+		
+		return damageAmount;
 	}
 	
-	public void victory()
-	{
-		System.out.println("You won!");
+	public void victory(Character player, Character enemy)
+	{	
+		player.setExperience(player.getExperience()+(enemy.getLevel()*30));
+		player.setHealth(player.getMaxHealth());
+		System.out.println("You won the battle!");
+		keyboard.nextLine();
+		keyboard.nextLine();
 	}
 	
 	public void death()
 	{
 		System.out.println("You are dead.");
 		System.out.println("Game Over");
-	}
-	
-	public static void main(String[] args)
-	{
-		Character player = new Character("link","warrior");
-		Enemy enemy = new Enemy("orc","warrior",3,80,150,0,80,60,null,null,null,null);
-		new Combat(player, enemy);
+		System.exit(0);
 	}
 }

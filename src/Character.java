@@ -89,47 +89,28 @@ public class Character
 	public String[] getDialogs(){ return dialogs; }
 	public int getMoney(){ return money; }
 	
-	public static void printCharacter(Character test)
+	public void printCharacter()
 	{
-		System.out.println("Name: "+test.getName());
-		System.out.println("Role: "+test.getRole());
-		System.out.println("Level: "+test.getLevel());
-		System.out.println("Experience: "+test.getExperience());
-		System.out.println("Health: "+test.getHealth());
-		System.out.println("Max Health: "+test.getMaxHealth());
-		System.out.println("Mana: "+test.getMana());
-		System.out.println("Max Mana: "+test.getMaxMana());
-		System.out.println("Strength: "+test.getStrength());
-		System.out.println("Defense: "+test.getDefense());
-		System.out.println("Speed: "+test.getSpeed());
-		System.out.println("Status: "+test.getStatus());
-		for(int i=0;i<test.getAttacks().length;i++){
-			System.out.println("Attack"+i+": "+test.getAttacks()[i]+" ");
+		System.out.println("Name: "+this.getName());
+		System.out.println("Role: "+this.getRole());
+		System.out.println("Level: "+this.getLevel());
+		System.out.println("Experience: "+this.getExperience());
+		System.out.println("Health: "+this.getHealth());
+		System.out.println("Max Health: "+this.getMaxHealth());
+		System.out.println("Mana: "+this.getMana());
+		System.out.println("Max Mana: "+this.getMaxMana());
+		System.out.println("Strength: "+this.getStrength());
+		System.out.println("Defense: "+this.getDefense());
+		System.out.println("Speed: "+this.getSpeed());
+		System.out.println("Status: "+this.getStatus());
+		for(int i=0;i<this.getAttacks().length;i++){
+			System.out.println("Attack"+i+": "+this.getAttacks()[i]+" ");
 		}
-		for(int i=0;i<test.getDialogs().length;i++){
-			System.out.println("Dialog"+i+": "+test.getDialogs()[i]+" ");
+		for(int i=0;i<this.getDialogs().length;i++){
+			System.out.println("Dialog"+i+": "+this.getDialogs()[i]+" ");
 		}
-		System.out.println("Money: "+test.getMoney());
+		System.out.println("Money: "+this.getMoney());
 		System.out.println();
 		System.out.println();
-	}
-	
-	public static void main(String[] args)
-	{
-		//Character(name,role)
-		Character test0 = new Character("lonk","warrior");
-		Character test1 = new Character("bob","mage");
-		Character test2 = new Character("zio","thief");
-		printCharacter(test0);
-		printCharacter(test1);
-		printCharacter(test2);
-		
-		//Enemy(name,role,level,health,mana,strength,defense,speed,status,attack0,attack1,attack2
-		Enemy test3 = new Enemy("orc","warrior",3,500,150,0,80,60,null,null,null,null);
-		printCharacter(test3);
-		
-		//NPC(name,role,dialog0,dialog1,dialog2,dialog3,dialog4
-		NPC test4 = new NPC("grand wizard","npc","hello","welcome, adventurer","i am here to guide you",null,null);
-		printCharacter(test4);
 	}
 }
