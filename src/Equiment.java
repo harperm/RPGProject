@@ -4,8 +4,10 @@ public class Equiment {
 	private String name;
 	private String type;
 	private String size;
-	private String equipped[] = new String [5];
-	private String chest[] = new String [5];
+	public static String equipped[] = new String [3];
+	public static boolean filled = false;
+	private String chest[] = new String [15];
+	public static int index = 0;
 	private String stat;
 	private String stat1;
 	private String stat2;
@@ -142,7 +144,7 @@ public class Equiment {
 
 		//----------------------------------
 		//Effects players overall Stats
-		public void printCharacter()
+		public void printEquipment()
 		{
 			System.out.println("Name: "+this.getName());
 			System.out.println("Type: "+this.getType());
@@ -157,12 +159,45 @@ public class Equiment {
  
 		//-----------------------------------
 		//Keep/remove equipment
-		void equiped(){
+		void equip()
+		 {
+	      if(filled != true)
+	       {
+	    	equipped[0] = name;
+	    	equipped[1] = type;
+	    	equipped[2] = size;
+	    	
+	    	filled = true;
+	       }
+	      else
+	       {
+	    	System.out.println("Sorry, there is already something equipped");  
+	       }
+		 }
+		
+		void unequip(){
+		if(filled = true){
 			
+			if(index != (chest.length - 3))
+			 {
+			  chest[index] = equipped[0];
+			  chest[index+1]= equipped[1];
+			  chest[index+2]= equipped [2];
+			  
+			  equipped[0]= null;
+			  equipped[1]=null;
+			  equipped[2]=null;
+			
+			  filled= false;
+			 }
+			else{
+				System.out.println("Sorry, there is no room in the chest.");
+			}
 		}
 		
-		void unequiped(){
-			
+		else{
+			System.out.println("There is nothing equipped");
+		}
 		}
 
 	}
