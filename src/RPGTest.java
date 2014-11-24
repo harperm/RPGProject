@@ -25,6 +25,7 @@ public class RPGTest
 		Character test0 = new Character("lonk","warrior");
 		Equipment sword0 = new Equipment("rookie blade","weapon","strength",10);
 		Equipment sword1 = new Equipment("test blade","weapon","strength",5);
+		Item health = new Item("");
 		test0.printCharacter();
 		sword0.printEquipment();
 		sword0.equip(test0);

@@ -7,6 +7,9 @@ public class Character
 	private int strength, defense, speed;
 	private String status;
 	private Equipment equipped[] = new Equipment[7];
+	private Equipment chest[] = new Equipment[15];
+	private Item inventory[] = new Item[30];
+	private int itemCount[] = new int[30];
 	private String attacks[] = new String[3];
 	private String dialogs[] = new String[5];
 	private int money;
@@ -71,27 +74,33 @@ public class Character
 	public void setStatus(String newStatus){ this.status = newStatus; }
 	public void setEquipped(Equipment[] newEquipped){ this.equipped = newEquipped; }
 	public void setEquippedItem(Equipment newEquippedItem, int i){ this.equipped[i] = newEquippedItem; }
+	public void setChest(Equipment[] newChest){ this.chest= newChest; }
+	public void setInventory(Item[] newInventory){ this.inventory = newInventory; }
+	public void setItemCount(int newItemCount, int i){ this.itemCount[i] = newItemCount; }
 	public void setAttacks(String[] newAttacks){ this.attacks = newAttacks; }
 	public void setDialogs(String [] newDialogs){ this.dialogs = newDialogs; }
 	public void setMoney(int newMoney){ this.money = newMoney; }
 	
 	//getters
-	public String getName(){ return name; }
-	public String getRole(){ return role; }
-	public int getLevel(){ return level; }
-	public int getExperience(){ return experience; }
-	public int getHealth(){ return health; }
-	public int getMaxHealth(){ return maxHealth; }
-	public int getMana(){ return mana; }
-	public int getMaxMana(){ return maxMana; }
-	public int getStrength(){ return strength; }
-	public int getDefense(){ return defense; }
-	public int getSpeed(){ return speed; }
-	public String getStatus(){ return status; }
-	public Equipment[] getEquipped(){ return equipped; }
-	public String[] getAttacks(){ return attacks; }
-	public String[] getDialogs(){ return dialogs; }
-	public int getMoney(){ return money; }
+	public String getName(){ return this.name; }
+	public String getRole(){ return this.role; }
+	public int getLevel(){ return this.level; }
+	public int getExperience(){ return this.experience; }
+	public int getHealth(){ return this.health; }
+	public int getMaxHealth(){ return this.maxHealth; }
+	public int getMana(){ return this.mana; }
+	public int getMaxMana(){ return this.maxMana; }
+	public int getStrength(){ return this.strength; }
+	public int getDefense(){ return this.defense; }
+	public int getSpeed(){ return this.speed; }
+	public String getStatus(){ return this.status; }
+	public Equipment[] getEquipped(){ return this.equipped; }
+	public Equipment[] getChest(){ return this.chest; }
+	public Item[] getInventory(){ return this.inventory; }
+	public int[] getItemCount(){ return this.itemCount; }
+	public String[] getAttacks(){ return this.attacks; }
+	public String[] getDialogs(){ return this.dialogs; }
+	public int getMoney(){ return this.money; }
 	
 	public void printCharacter()
 	{

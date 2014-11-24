@@ -11,7 +11,6 @@ public class Equipment
 	private int effect0;
 	private int effect1;
 	private int effect2;
-	private Equipment chest[] = new Equipment[15];
 	
 	//----------------------------------
 	//constructors
@@ -52,7 +51,6 @@ public class Equipment
 	public void setName(String newName){ this.name = newName; }
 	public void setType(String newType){ this.type= newType; }
 	public void setSize(String newSize){ this.size= newSize; }
-	public void setChest(Equipment[] newChest){ this.chest= newChest; }
 	public void setStat0(String newStat0){ this.stat0 = newStat0; }
 	public void setStat1(String newStat1){ this.stat1= newStat1; }
 	public void setStat2(String newStat2){ this.stat2= newStat2; }
@@ -65,7 +63,6 @@ public class Equipment
 	public String getName(){ return name; }
 	public String getType(){ return type; }
 	public String getSize(){ return size; }
-	public Equipment[] getChest(){ return chest; }
 	public String getStat0(){ return stat0; }
 	public String getStat1(){ return stat1; }
 	public String getStat2(){ return stat2; }
