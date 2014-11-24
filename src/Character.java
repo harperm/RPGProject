@@ -6,6 +6,7 @@ public class Character
 	private int mana, maxMana;
 	private int strength, defense, speed;
 	private String status;
+	private Equipment equipped[] = new Equipment[7];
 	private String attacks[] = new String[3];
 	private String dialogs[] = new String[5];
 	private int money;
@@ -68,6 +69,8 @@ public class Character
 	public void setDefense(int newDefense){ this.defense = newDefense; }
 	public void setSpeed(int newSpeed){ this.speed = newSpeed; }
 	public void setStatus(String newStatus){ this.status = newStatus; }
+	public void setEquipped(Equipment[] newEquipped){ this.equipped = newEquipped; }
+	public void setEquippedItem(Equipment newEquippedItem, int i){ this.equipped[i] = newEquippedItem; }
 	public void setAttacks(String[] newAttacks){ this.attacks = newAttacks; }
 	public void setDialogs(String [] newDialogs){ this.dialogs = newDialogs; }
 	public void setMoney(int newMoney){ this.money = newMoney; }
@@ -85,6 +88,7 @@ public class Character
 	public int getDefense(){ return defense; }
 	public int getSpeed(){ return speed; }
 	public String getStatus(){ return status; }
+	public Equipment[] getEquipped(){ return equipped; }
 	public String[] getAttacks(){ return attacks; }
 	public String[] getDialogs(){ return dialogs; }
 	public int getMoney(){ return money; }
@@ -103,14 +107,28 @@ public class Character
 		System.out.println("Defense: "+this.getDefense());
 		System.out.println("Speed: "+this.getSpeed());
 		System.out.println("Status: "+this.getStatus());
+		for(int i=0;i<this.getEquipped().length;i++){
+			if(this.getEquipped()[i]!=null){
+				System.out.println("Equipment"+i+": "+this.getEquipped()[i].getName());
+			}
+		}
 		for(int i=0;i<this.getAttacks().length;i++){
-			System.out.println("Attack"+i+": "+this.getAttacks()[i]+" ");
+			if(this.getAttacks()[i]!=null){
+				System.out.println("Attack"+i+": "+this.getAttacks()[i]+" ");
+			}
 		}
 		for(int i=0;i<this.getDialogs().length;i++){
-			System.out.println("Dialog"+i+": "+this.getDialogs()[i]+" ");
+			if(this.getDialogs()[i]!=null){
+				System.out.println("Dialog"+i+": "+this.getDialogs()[i]+" ");
+			}
 		}
 		System.out.println("Money: "+this.getMoney());
 		System.out.println();
 		System.out.println();
 	}
+	
+	
+	
+	
 }
+
