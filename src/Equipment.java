@@ -104,6 +104,7 @@ public class Equipment
 			if(player.getEquipped()[i]==null){
 				player.setEquippedItem(this, i);
 				System.out.println(player.getEquipped()[i].getName()+" equipped");
+				System.out.println();
 				break;
 			}
 			

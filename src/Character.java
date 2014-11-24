@@ -76,6 +76,7 @@ public class Character
 	public void setEquippedItem(Equipment newEquippedItem, int i){ this.equipped[i] = newEquippedItem; }
 	public void setChest(Equipment[] newChest){ this.chest= newChest; }
 	public void setInventory(Item[] newInventory){ this.inventory = newInventory; }
+	public void setInventoryItem(Item newInventoryItem, int i){ this.inventory[i] = newInventoryItem; }
 	public void setItemCount(int newItemCount, int i){ this.itemCount[i] = newItemCount; }
 	public void setAttacks(String[] newAttacks){ this.attacks = newAttacks; }
 	public void setDialogs(String [] newDialogs){ this.dialogs = newDialogs; }
@@ -116,6 +117,11 @@ public class Character
 		System.out.println("Defense: "+this.getDefense());
 		System.out.println("Speed: "+this.getSpeed());
 		System.out.println("Status: "+this.getStatus());
+		for(int i=0;i<this.getInventory().length;i++){
+			if(this.getInventory()[i]!=null){
+				System.out.println("Inventory"+i+": "+this.getInventory()[i].getName());
+			}
+		}
 		for(int i=0;i<this.getEquipped().length;i++){
 			if(this.getEquipped()[i]!=null){
 				System.out.println("Equipment"+i+": "+this.getEquipped()[i].getName());
