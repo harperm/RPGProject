@@ -12,11 +12,12 @@ public class Character
 	private int itemCount[] = new int[30];
 	private String attacks[] = new String[3];
 	private String dialogs[] = new String[5];
-	private int[][] position;
+	private int positionX;
+	private int positionY;
 	private int money;
 	
 	//player
-	public Character(String name, String role)
+	public Character(String name, String role, int positionX, int positionY)
 	{
 		this.name = name;
 		this.role = role;
@@ -58,6 +59,8 @@ public class Character
 		this.mana = maxMana;
 		this.status = null;
 		this.money = 0;
+		this.positionX = positionX;
+		this.positionY = positionY;
 	}
 	
 	//setters
@@ -81,7 +84,9 @@ public class Character
 	public void setInventoryItem(Item newInventoryItem, int i){ this.inventory[i] = newInventoryItem; }
 	public void setItemCount(int newItemCount, int i){ this.itemCount[i] = newItemCount; }
 	public void setAttacks(String[] newAttacks){ this.attacks = newAttacks; }
-	public void setDialogs(String [] newDialogs){ this.dialogs = newDialogs; }
+	public void setDialogs(String[] newDialogs){ this.dialogs = newDialogs; }
+	public void setPositionX(int newPositionX){ this.positionX = newPositionX; }
+	public void setPositionY(int newPositionY){ this.positionY = newPositionY; }
 	public void setMoney(int newMoney){ this.money = newMoney; }
 	
 	//getters
@@ -103,6 +108,8 @@ public class Character
 	public int[] getItemCount(){ return this.itemCount; }
 	public String[] getAttacks(){ return this.attacks; }
 	public String[] getDialogs(){ return this.dialogs; }
+	public int getPositionX(){ return this.positionX; }
+	public int getPositionY(){ return this.positionY; }
 	public int getMoney(){ return this.money; }
 	
 	//prints character
@@ -140,6 +147,7 @@ public class Character
 				System.out.println("Dialog"+i+": "+this.getDialogs()[i]+" ");
 			}
 		}
+		System.out.println("Position: ("+getPositionX()+","+getPositionY()+")");
 		System.out.println("Money: "+this.getMoney());
 		System.out.println();
 		System.out.println();

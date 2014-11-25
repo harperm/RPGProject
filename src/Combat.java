@@ -9,9 +9,6 @@ public class Combat
 	
 	public Combat(Character player, Enemy enemy)
 	{
-		System.out.println("A "+enemy.getRole()+" "+enemy.getName()+" has appeared!");
-		System.out.println();
-		
 		printHPs(player, enemy);
 		
 		while(true){
