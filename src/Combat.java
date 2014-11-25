@@ -72,7 +72,7 @@ public class Combat
 		int randomHit = rand.nextInt(100)+1;
 		int speedBonus = (attacker.getSpeed()-target.getSpeed())/5;
 		
-		if(randomHit+speedBonus >= 50){
+		if(randomHit+speedBonus >= 35){
 			return true;
 		}else{
 			return false;

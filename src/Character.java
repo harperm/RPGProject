@@ -17,7 +17,7 @@ public class Character
 	private int money;
 	
 	//player
-	public Character(String name, String role, int positionX, int positionY)
+	public Character(String name, String role)
 	{
 		this.name = name;
 		this.role = role;
@@ -59,8 +59,6 @@ public class Character
 		this.mana = maxMana;
 		this.status = null;
 		this.money = 0;
-		this.positionX = positionX;
-		this.positionY = positionY;
 	}
 	
 	//setters
