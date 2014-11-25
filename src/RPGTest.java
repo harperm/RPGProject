@@ -34,8 +34,8 @@ public class RPGTest
 		//Character player2 = new Character("zio","thief");
 		
 		Equipment sword0 = new Equipment("rookie blade","weapon","strength",10);
-		//Equipment sword1 = new Equipment("test blade","weapon","strength",5);
-		Item smallHealth = new Item("small health potion","health",10);
+		Equipment sword1 = new Equipment("test blade","weapon","strength",5);
+		Potion smallHealth = new Potion("small health potion","health",10);
 		
 		player0.printCharacter();
 		
@@ -50,12 +50,12 @@ public class RPGTest
 		player0.printCharacter();
 		
 		
-		//Enemy enemy0 = new Enemy("orc","warrior",1,80,150,0,80,60,null,null,null,null);
-		//Enemy enemy1 = new Enemy("orc","mage",1,80,150,0,80,60,null,null,null,null);
+		Enemy enemy0 = new Enemy("orc","warrior",1,80,150,0,80,60,null,null,null,null);
+		Enemy enemy1 = new Enemy("orc","mage",1,80,150,0,80,60,null,null,null,null);
 		//NPC npc0 = new NPC("grand wizard","npc","hello","welcome, adventurer","i am here to guide you",null,null);
 		
-		//new Combat(player0, enemy0);
-		//new Combat(player0, enemy1);
+		new Combat(player0, enemy0);
+		new Combat(player0, enemy1);
 		
 		System.out.println();		
 		System.out.println("You completed the game!");

@@ -5,20 +5,21 @@ public class Enemy extends Character
 				String status, String attack0, String attack1, String attack2)
 	{
 		super(name, role);
-		setName(name);
-		setRole(role);
-		setLevel(level);
-		setHealth(health);
-		setMaxHealth(health);
-		setMana(mana);
-		setMaxMana(mana);
-		setStrength(strength);
-		setDefense(defense);
-		setSpeed(speed);
-		setStatus(status);
-		String[] attacks = {attack0,attack1,attack2};
+		
+		this.setName(name);
+		this.setRole(role);
+		this.setLevel(level);
+		this.setHealth(health);
+		this.setMaxHealth(health);
+		this.setMana(mana);
+		this.setMaxMana(mana);
+		this.setStrength(strength);
+		this.setDefense(defense);
+		this.setSpeed(speed);
+		this.setStatus(status);
 		
 		//if all attacks are null, default adds the base role attacks to the enemy
-		if(attacks[0]!=null && attacks[1]!=null && attacks[2]!=null){ setAttacks(attacks); }
+		String[] attacks = {attack0,attack1,attack2};
+		if(attacks[0]!=null && attacks[1]!=null && attacks[2]!=null){ this.setAttacks(attacks); }
 	}
 }

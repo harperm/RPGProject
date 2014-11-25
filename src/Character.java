@@ -12,6 +12,7 @@ public class Character
 	private int itemCount[] = new int[30];
 	private String attacks[] = new String[3];
 	private String dialogs[] = new String[5];
+	private int[][] position;
 	private int money;
 	
 	//player
@@ -104,6 +105,7 @@ public class Character
 	public String[] getDialogs(){ return this.dialogs; }
 	public int getMoney(){ return this.money; }
 	
+	//prints character
 	public void printCharacter()
 	{
 		System.out.println("Name: "+this.getName());
@@ -120,7 +122,7 @@ public class Character
 		System.out.println("Status: "+this.getStatus());
 		for(int i=0;i<this.getInventory().length;i++){
 			if(this.getInventory()[i]!=null){
-				System.out.println("Inventory"+i+": "+this.getInventory()[i].getName());
+				System.out.println("Inventory"+i+": "+this.getInventory()[i].getName()+"("+this.getItemCount()[i]+")");
 			}
 		}
 		for(int i=0;i<this.getEquipped().length;i++){

@@ -14,7 +14,6 @@ public class Equipment
 	
 	//----------------------------------
 	//constructors
-	
 	public Equipment(String name,String type, String stat0, int effect0)
 	{
 		this.name = name;
@@ -70,9 +69,6 @@ public class Equipment
 	public int getEffect1(){ return effect1; }
 	public int getEffect2(){ return effect2; }
 
-	//----------------------------------
-	//Effects players overall Stats
-	
 	
 	
 	public void add(Character player)
@@ -92,7 +88,6 @@ public class Equipment
 	
 	//-----------------------------------
 	//Keep/remove equipment
-
     public void equip(Character player)
 	{	
     	for(int i=0;i<player.getChest().length;i++){
