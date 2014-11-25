@@ -29,29 +29,35 @@ public class RPGTest
 {
 	public static void main(String[] args)
 	{
-		Character test0 = new Character("lonk","warrior");
+		Character player0 = new Character("lonk","warrior");
+		//Character player1 = new Character("bob","mage");
+		//Character player2 = new Character("zio","thief");
+		
 		Equipment sword0 = new Equipment("rookie blade","weapon","strength",10);
-		Equipment sword1 = new Equipment("test blade","weapon","strength",5);
+		//Equipment sword1 = new Equipment("test blade","weapon","strength",5);
 		Item smallHealth = new Item("small health potion","health",10);
-		test0.setHealth(90);
-		test0.printCharacter();
+		
+		player0.printCharacter();
+		
 		sword0.printEquipment();
+		sword0.equip(player0);
+		
 		smallHealth.printItem();
-		sword0.equip(test0);
-		smallHealth.add(test0);
-		smallHealth.add(test0);
-		smallHealth.use(test0);
-		test0.printCharacter();
-		Character test1 = new Character("bob","mage");
-		Character test2 = new Character("zio","thief");
-		Enemy test3 = new Enemy("orc","warrior",1,80,150,0,80,60,null,null,null,null);
-		Enemy test4 = new Enemy("orc","mage",1,80,150,0,80,60,null,null,null,null);
-		NPC test5 = new NPC("grand wizard","npc","hello","welcome, adventurer","i am here to guide you",null,null);
+		smallHealth.add(player0);
+		smallHealth.add(player0);
+		smallHealth.use(player0);
 		
-		//new Combat(test0, test3);
-		//new Combat(test0, test4);
-		//System.out.println();
+		player0.printCharacter();
 		
+		
+		//Enemy enemy0 = new Enemy("orc","warrior",1,80,150,0,80,60,null,null,null,null);
+		//Enemy enemy1 = new Enemy("orc","mage",1,80,150,0,80,60,null,null,null,null);
+		//NPC npc0 = new NPC("grand wizard","npc","hello","welcome, adventurer","i am here to guide you",null,null);
+		
+		//new Combat(player0, enemy0);
+		//new Combat(player0, enemy1);
+		
+		System.out.println();		
 		System.out.println("You completed the game!");
 		System.out.println("Congradulations!");
 	}

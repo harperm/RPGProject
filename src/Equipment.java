@@ -72,41 +72,51 @@ public class Equipment
 
 	//----------------------------------
 	//Effects players overall Stats
-	public void printEquipment()
-	{
-		System.out.println("Name: "+this.getName());
-		System.out.println("Type: "+this.getType());
-		System.out.println("Size: "+this.getSize());
-		System.out.println("Stat 1: "+this.getStat0());
-		System.out.println("Effect 1: "+this.getEffect0());
-		System.out.println("Stat 2: "+this.getStat1());
-		System.out.println("Effect 2: "+this.getEffect1());
-		System.out.println("Stat 3: "+this.getStat2());
-		System.out.println("Effect 3: "+this.getEffect2());
-		System.out.println();
+	
+	
+	
+	public void add(Character player)
+	{		
+		for(int i=0;i<player.getChest().length;i++){
+			if(player.getChest()[i]!=null){
+				player.setChestItem(this, i);
+				System.out.println(player.getChest()[i].getName()+" added");
+				break;
+			}else if(i==player.getChest().length && player.getChest()[i]==null){
+				System.out.println("Sorry, there is no room for that");
+			}
+		}
 		System.out.println();
 	}
+	
 	
 	//-----------------------------------
 	//Keep/remove equipment
 
     public void equip(Character player)
-	{		
-		for(int i=0;i<player.getEquipped().length;i++){
-			if(player.getEquipped()[i]!=null){
-				if(player.getEquipped()[i].getType().equals(this.getType())){
-					System.out.println(this.getName()+" not equipped: Slot is full");
-					System.out.println();
+	{	
+    	for(int i=0;i<player.getChest().length;i++){
+    		if(player.getChest()[i]!=null){
+				if(!player.getChest()[i].getName().equals(this.name) && i==player.getChest().length-1){
+					System.out.println("Item not found");
 					break;
 				}
-			}
-			
+    		}
+    	}
+    	
+		for(int i=0;i<player.getEquipped().length;i++){
 			if(player.getEquipped()[i]==null){
 				player.setEquippedItem(this, i);
 				System.out.println(player.getEquipped()[i].getName()+" equipped");
 				System.out.println();
 				break;
-			}
+			}else{
+				if(player.getEquipped()[i].getType().equals(this.getType())){
+					System.out.println(this.getName()+" not equipped: Slot is full");
+					System.out.println();
+					break;
+				}
+			}			
 			
 			if(i==player.getEquipped().length && player.getEquipped()[i]==null){
 				System.out.println("Sorry, there is no room for that");
@@ -126,6 +136,21 @@ public class Equipment
 				}
 			}
 		}
+	}
+	
+	public void printEquipment()
+	{
+		System.out.println("Name: "+this.getName());
+		System.out.println("Type: "+this.getType());
+		System.out.println("Size: "+this.getSize());
+		System.out.println("Stat1: "+this.getStat0());
+		System.out.println("Effect1: "+this.getEffect0());
+		System.out.println("Stat2: "+this.getStat1());
+		System.out.println("Effect2: "+this.getEffect1());
+		System.out.println("Stat3: "+this.getStat2());
+		System.out.println("Effect3: "+this.getEffect2());
+		System.out.println();
+		System.out.println();
 	}
 }
 

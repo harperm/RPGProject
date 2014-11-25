@@ -29,9 +29,9 @@ public class Character
 			this.strength = 100;
 			this.defense = 100;
 			this.speed = 30;
-			this.attacks[0] = "slash";
+			this.attacks[0] = "punch";
 			this.attacks[1] = "charge";
-			this.attacks[2] = "punch";
+			this.attacks[2] = "slash";
 		}
 		
 		if(role.equals("mage")){
@@ -39,9 +39,9 @@ public class Character
 			this.strength = 100;
 			this.defense = 60;
 			this.speed = 60;
-			this.attacks[0] = "fireball";
-			this.attacks[1] = "frost";
-			this.attacks[2] = "lightning";
+			this.attacks[0] = "frost";
+			this.attacks[1] = "lightning";
+			this.attacks[2] = "fireball";
 		}
 		
 		if(role.equals("thief")){
@@ -49,9 +49,9 @@ public class Character
 			this.strength = 80;
 			this.defense = 60;
 			this.speed = 100;
-			this.attacks[0] = "stab";
-			this.attacks[1] = "stun";
-			this.attacks[2] = "throw";
+			this.attacks[0] = "stun";
+			this.attacks[1] = "throw";
+			this.attacks[2] = "stab";
 		}
 		
 		this.mana = maxMana;
@@ -75,6 +75,7 @@ public class Character
 	public void setEquipped(Equipment[] newEquipped){ this.equipped = newEquipped; }
 	public void setEquippedItem(Equipment newEquippedItem, int i){ this.equipped[i] = newEquippedItem; }
 	public void setChest(Equipment[] newChest){ this.chest= newChest; }
+	public void setChestItem(Equipment newChestItem, int i){ this.chest[i] = newChestItem; }
 	public void setInventory(Item[] newInventory){ this.inventory = newInventory; }
 	public void setInventoryItem(Item newInventoryItem, int i){ this.inventory[i] = newInventoryItem; }
 	public void setItemCount(int newItemCount, int i){ this.itemCount[i] = newItemCount; }
