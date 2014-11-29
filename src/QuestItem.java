@@ -19,9 +19,8 @@ public class QuestItem extends Item
 				break;
 			}else if(player.getInventory()[i]!=null){
 				if(player.getInventory()[i].getName().equals(this.getName())){
-					if(this.getNPC()==null){ //has to be fixed to check for an NPC at the position
+					if(player.getName().equals(this.getNPC())){
 						player.setItemCount(player.getItemCount()[i]-1, i);
-
 						if(player.getItemCount()[i]==0){
 							player.setInventoryItem(null, i);
 						}

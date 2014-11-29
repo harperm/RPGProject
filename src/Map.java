@@ -20,12 +20,16 @@ public class Map
 		this.NPCMap = new NPC[mapX][mapY];
 	}
 	
+	public void setMapX(int newMapX){ this.mapX = newMapX; }
+	public void setMapY(int newMapY){ this.mapY = newMapY; }
 	public void setStringMap(String newStringMap[][]){ this.stringMap = newStringMap; }
 	public void setItemMap(Item[][] newItemMap){ this.itemMap = newItemMap; }
 	public void setEquipmentMap(Equipment[][] newEquipmentMap){ this.equipmentMap = newEquipmentMap; }
 	public void setEnemyMap(Enemy newEnemyMap[][]){ this.enemyMap = newEnemyMap; }
 	public void setNPCMap(NPC newNPCMap[][]){ this.NPCMap = newNPCMap; }
 	
+	public int getMapX(){ return this.mapX; }
+	public int getMapY(){ return this.mapY; }
 	public int[][] getIntMap(){ return this.intMap; }
 	public String[][] getStringMap(){ return this.stringMap; }
 	public Item[][] getItemMap(){ return this.itemMap; }
@@ -65,17 +69,22 @@ public class Map
 			System.out.println();
 			
 			new Combat(player,this.enemyMap[x][y]);
+			printMap(player);
 		}
 		
 		if(this.NPCMap[x][y]!=null){
 			for(int i=0;i<this.NPCMap[x][y].getDialogs().length;i++){
-				System.out.println(this.NPCMap[x][y].getDialogs()[i]);
+				if(this.NPCMap[x][y].getDialogs()[i]!=null){
+					System.out.println(this.NPCMap[x][y].getDialogs()[i]);
+				}
 			}
+			System.out.println();
 		}
 		
 		if(this.itemMap[x][y]!=null){
 			System.out.println("You found a "+this.itemMap[x][y].getName());
 			this.itemMap[x][y].add(player);
+			System.out.println();
 		}
 		
 		if(this.equipmentMap[x][y]!=null){
@@ -84,8 +93,46 @@ public class Map
 		}
 	}
 	
-	public void printMap()
+	public void move(Character player, String move)
+	{
+		int currPosY = player.getPositionY();
+		int currPosX = player.getPositionX();
+		
+		if(move=="up"&&currPosY+1<=mapY){
+			player.setPositionY(currPosY+1);
+		}else if(move=="left"&&currPosX+1<=mapX){
+			player.setPositionX(currPosX+1);
+		}else if(move=="down"&&currPosY-1>=0){
+			player.setPositionX(currPosY-1);
+		}else if(move=="right"&&currPosX-1>=0){
+			player.setPositionX(currPosX-1);
+		}else{
+			System.out.println("Error: Cannot move there");
+			System.out.println();
+		}
+	}
+	
+	public void printMap(Character player)
 	{
 		
+		for(int i=mapY-1;i>0;i--){
+			System.out.print("###");
+		}
+		System.out.println("#");
+		for(int i=mapY-1;i>=0;i--){
+			System.out.print("#");
+			for(int j=mapX-1;j>=0;j--){
+				if(player.getPositionX()==j&&player.getPositionY()==i){
+					System.out.print("|P");
+				}else{
+					System.out.print("| ");
+				}
+			}
+			System.out.println("|#");
+			for(int j=mapX-1;j>=0;j--){
+				System.out.print("##");
+			}
+			System.out.println("###");
+		}
 	}
 }

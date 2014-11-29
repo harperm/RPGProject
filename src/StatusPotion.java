@@ -10,26 +10,32 @@ public class StatusPotion extends Item
 	//uses status potion
 	public void use(Character player)
 	{
+		//cycles through player.Inventory[]
 		for(int i=0;i<player.getInventory().length;i++){
+			//checks if the item name is in the inventory
 			if(!player.getInventory()[i].getName().equals(this.getName())
-					&& i==player.getInventory().length-1){
-				System.out.println("Item not found");
-				System.out.println();
-				break;
-			}else if(player.getInventory()[i]!=null){
-				if(player.getInventory()[i].getName().equals(this.getName())){
-					if(this.getNPC()==null){
-						player.setItemCount(player.getItemCount()[i]-1, i);
-
-						if(player.getItemCount()[i]==0){
-							player.setInventoryItem(null, i);
-						}
-						
-						cure(player,this.getStat(),i);
-						System.out.println();
-						break;
+				&& i==player.getInventory().length-1){
+					System.out.println("Item not found");
+					System.out.println();
+					break;
+			}
+			
+			//checks for which inven inventory slot
+			if(player.getInventory()[i]!=null
+				&& player.getInventory()[i].getName().equals(this.getName())
+				&& this.getNPC()==null){
+					//decreases item count by one
+					player.setItemCount(player.getItemCount()[i]-1, i);
+					
+					//takes item out of inventory if count is zero
+					if(player.getItemCount()[i]==0){
+						player.setInventoryItem(null, i);
 					}
-				}
+					
+					//cures
+					cure(player,this.getStat(),i);
+					System.out.println();
+					break;
 			}
 		}
 	}
