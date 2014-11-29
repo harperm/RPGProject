@@ -53,7 +53,7 @@ public class RPGTest
 		Potion smallHealth = new Potion("small health potion","health",10);
 		
 		sword0.equip(player);
-		
+		map.place("Welcome to the PRG!",0,0);
 		map.place(player,0,0);
 		map.place(enemy0,1,3);
 		map.place(enemy1,0,1);

@@ -39,7 +39,9 @@ public class Map
 	
 	public void place(Object object, int x, int y)
 	{
-		if(object instanceof Enemy){
+		if(object instanceof String){
+			this.stringMap[x][y] = (String)object;
+		}else if(object instanceof Enemy){
 			this.enemyMap[x][y] = (Enemy)object;
 		}else if(object instanceof NPC){
 			this.NPCMap[x][y] = (NPC)object;
@@ -62,6 +64,7 @@ public class Map
 		
 		if(this.stringMap[x][y]!=null){
 			System.out.println(this.stringMap[x][y]);
+			System.out.println();
 		}
 		
 		if(this.enemyMap[x][y]!=null){
