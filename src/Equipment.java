@@ -82,7 +82,6 @@ public class Equipment
 				System.out.println("Sorry, there is no room for that");
 			}
 		}
-		System.out.println();
 	}
 	
 	

@@ -69,6 +69,8 @@ public class Map
 			System.out.println();
 			
 			new Combat(player,this.enemyMap[x][y]);
+			this.enemyMap[x][y]=null;
+			
 			printMap(player);
 			System.out.println("("+x+","+y+")");
 			System.out.println();
@@ -77,7 +79,7 @@ public class Map
 		if(this.NPCMap[x][y]!=null){
 			for(int i=0;i<this.NPCMap[x][y].getDialogs().length;i++){
 				if(this.NPCMap[x][y].getDialogs()[i]!=null){
-					System.out.println(this.NPCMap[x][y].getDialogs()[i]);
+					System.out.println(this.NPCMap[x][y].getName()+": "+this.NPCMap[x][y].getDialogs()[i]);
 				}
 			}
 			System.out.println();
@@ -86,12 +88,15 @@ public class Map
 		if(this.itemMap[x][y]!=null){
 			System.out.println("You found a "+this.itemMap[x][y].getName());
 			this.itemMap[x][y].add(player);
+			this.itemMap[x][y]=null;
 			System.out.println();
 		}
 		
 		if(this.equipmentMap[x][y]!=null){
 			System.out.println("You found the "+this.equipmentMap[x][y].getName());
 			this.equipmentMap[x][y].add(player);
+			this.equipmentMap[x][y]=null;
+			System.out.println();
 		}
 	}
 	
@@ -116,15 +121,14 @@ public class Map
 	
 	public void printMap(Character player)
 	{
-		
 		for(int i=0;i<mapX;i++){
 			System.out.print("##");
 		}
-		
 		System.out.println("###");
 		
 		for(int i=mapY-1;i>=0;i--){
 			System.out.print("#");
+			
 			for(int j=mapX-1;j>=0;j--){
 				if(player.getPositionX()==j&&player.getPositionY()==i){
 					System.out.print("|P");
@@ -132,16 +136,13 @@ public class Map
 					System.out.print("| ");
 				}
 			}
-			
-			System.out.println("|#");
+			System.out.println("|#");	
 			
 			for(int j=mapX-1;j>=0;j--){
 				System.out.print("##");
 			}
-			
 			System.out.println("###");
 		}
-		
 		System.out.println();
 	}
 	
