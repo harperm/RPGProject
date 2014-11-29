@@ -57,7 +57,7 @@ public class Map
 	{
 		int x = player.getPositionX();
 		int y = player.getPositionY();
-		System.out.println("("+player.getPositionX()+","+player.getPositionY()+")");
+		System.out.println("("+x+","+y+")");
 		System.out.println();
 		
 		if(this.stringMap[x][y]!=null){
@@ -70,6 +70,8 @@ public class Map
 			
 			new Combat(player,this.enemyMap[x][y]);
 			printMap(player);
+			System.out.println("("+x+","+y+")");
+			System.out.println();
 		}
 		
 		if(this.NPCMap[x][y]!=null){
@@ -115,10 +117,12 @@ public class Map
 	public void printMap(Character player)
 	{
 		
-		for(int i=mapY-1;i>0;i--){
-			System.out.print("###");
+		for(int i=0;i<mapX;i++){
+			System.out.print("##");
 		}
-		System.out.println("#");
+		
+		System.out.println("###");
+		
 		for(int i=mapY-1;i>=0;i--){
 			System.out.print("#");
 			for(int j=mapX-1;j>=0;j--){
@@ -128,11 +132,17 @@ public class Map
 					System.out.print("| ");
 				}
 			}
+			
 			System.out.println("|#");
+			
 			for(int j=mapX-1;j>=0;j--){
 				System.out.print("##");
 			}
+			
 			System.out.println("###");
 		}
+		
+		System.out.println();
 	}
+	
 }

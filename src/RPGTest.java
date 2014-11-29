@@ -36,7 +36,7 @@ public class RPGTest
 	{
 		Scanner keyboard = new Scanner(System.in);
 		
-		Map map = new Map(5,5);
+		Map map = new Map(21,11);
 		
 		Character player = new Character("lonk","warrior");
 		//Character player1 = new Character("bob","mage");
@@ -74,6 +74,7 @@ public class RPGTest
 				break;
 			}else{
 				String option = keyboard.next();
+				System.out.println();
 				new Command(player,map,command,option);
 			}
 		}
