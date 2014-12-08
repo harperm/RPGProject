@@ -67,11 +67,10 @@ public class RPGTest
 		
 		player.printCharacter();
 		
-
 		String file = "FinalMap2.txt";
 		map.importMap(file);
 
-		map.place(player,15,0);
+		map.place(player,20,10);
 		map.place(questItem, 1,1);
 		map.place(enemy0,16,2);
 		map.place(enemy1,0,1);
@@ -88,13 +87,10 @@ public class RPGTest
 		map.place(smallStamina, 10, 4);
 		map.place(smallMana, 11, 7);
 
-		
 		map.printMap(player);
 
 		map.checkCollision(player);
 		
-	
-
 		while(true)
 		{
 			System.out.print("Command: ");
@@ -112,30 +108,5 @@ public class RPGTest
 		System.out.println();		
 		System.out.println("You completed the game!");
 		System.out.println("Congradulations!");
-	}
-	
-	public static void printMap(char[][] map){
-		
-		for(int i = 0; i < map.length; i++)
-		{
-			printSeparator();
-			System.out.print("#|");
-			for(int j = 0; j < map[i].length; j++)
-			{
-				if (map[i][j] == 'E')
-					System.out.print(' ');
-				else
-					System.out.print(map[i][j]); 
-				System.out.print('|'); 
-			}
-			System.out.println("#");
-		}
-		printSeparator();
-	}
-	
-	private static void printSeparator(){
-		for (int i=0; i<45; i++)
-			System.out.print('#');
-		System.out.println();
 	}
 }

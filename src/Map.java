@@ -108,9 +108,6 @@ public class Map
 		//test.printMap(test.getCharMap());
 	}
 	
-	
-	
-	
 	public Map(int mapX, int mapY)
 	{
 		this.mapX = mapX;
