@@ -227,14 +227,14 @@ public class Map
 		int currPosY = player.getPositionY();
 		int currPosX = player.getPositionX();
 		
-		if(move=="up"&&currPosY+1<=mapY){
-			player.setPositionY(currPosY+1);
-		}else if(move=="left"&&currPosX+1<=mapX){
-			player.setPositionX(currPosX+1);
-		}else if(move=="down"&&currPosY-1>=0){
-			player.setPositionX(currPosY-1);
-		}else if(move=="right"&&currPosX-1>=0){
+		if(move=="up"&&currPosY-1<=mapX){
+			player.setPositionY(currPosY-1);
+		}else if(move=="left"&&currPosX-1<=mapY){
 			player.setPositionX(currPosX-1);
+		}else if(move=="down"&&currPosY+1>=0){
+			player.setPositionX(currPosY+1);
+		}else if(move=="right"&&currPosX+1>=0){
+			player.setPositionX(currPosX+1);
 		}else{
 			System.out.println("Error: Cannot move there");
 			System.out.println();
