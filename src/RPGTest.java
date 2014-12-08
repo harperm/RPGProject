@@ -28,10 +28,6 @@
  * 
  */
 import java.io.*;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class RPGTest
@@ -66,14 +62,17 @@ public class RPGTest
 		Item questItem = new Item("magic crystal");
 
 		sword0.equip(player);
-		map.place("Welcome to the PRG!",0,0);
-
+		map.place("Welcome to the RPG!",0,0);
+		
+		player.printCharacter();
+		
+		/*
 		BufferedReader reader = new BufferedReader(new FileReader("FinalMap2.txt"));
 		String line = "";
 
 		//11x21
-		char [][] newMap = new char[11][21];
-		while( line != null)
+		char[][] newMap = new char[11][21];
+		while(line != null)
 		{
 
 			for(int i = 0; i < newMap.length; i++)
@@ -94,16 +93,17 @@ public class RPGTest
 		}
 
 		reader.close();
-		player.printCharacter();
+		
 
 		RPGTest.printMap(newMap);
+	*/
+		String file = "FinalMap2.txt";
+		map.importMap(file);
 
-
-
-		//map.place(player,0,0);
-		//map.place(questItem, 1,1);
-		//map.place(enemy0,16,2);
-		/*map.place(enemy1,0,1);
+		map.place(player,0,0);
+		map.place(questItem, 1,1);
+		map.place(enemy0,16,2);
+		map.place(enemy1,0,1);
 		map.place(enemy2,4,4);
 		map.place(enemy3,15,5);
 		map.place(enemy4,6,7);
@@ -113,12 +113,12 @@ public class RPGTest
 		map.place(sword1,0,0);
 		map.place(smallHealth,0,0);
 		map.place(smallStamina, 10, 4);
-		map.place(smallMana, 11, 7);*/
+		map.place(smallMana, 11, 7);
 
 		
-		//map.printMap(player);
+		map.printMap(player);
 
-		//map.checkCollision(player);
+		map.checkCollision(player);
 
 		while(true)
 		{

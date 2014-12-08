@@ -1,18 +1,121 @@
+import java.io.*;
+
 public class Map
 {
 	private int mapX;
 	private int mapY;
 	private int[][] intMap;
+	private char[][] charMap;
 	private String[][] stringMap;
 	private Item[][]  itemMap;
 	private Equipment[][] equipmentMap;
 	private Enemy[][] enemyMap;
 	private NPC[][] NPCMap;
 	
+	public void importMap(String file) throws FileNotFoundException, IOException
+	{
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		String line = "";
+		
+		//11x21
+		char [][] newMap = new char[11][21];
+		for(int i = 0; i < newMap.length; i++){ 
+			line = reader.readLine();
+			for(int j = 0; j < newMap[i].length; j++){
+				if (line.length() >= 2){
+					newMap[i][j] = line.charAt(j);
+				}
+			}
+		}
+		
+		setCharMap(newMap);
+		reader.close();
+	}
+	
+	public void printMap(Character player)
+	{
+		String map = "";
+		for(int i=0;i<mapX;i++){
+			map += "##";
+		}
+		map += "###\n";
+		
+		for(int i=mapY-1;i>=0;i--){
+			map += "#";
+			
+			for(int j=mapX-1;j>=0;j--){
+				map+= '|';
+				if(player.getPositionX()==j&&player.getPositionY()==i){
+					map += "P";
+				}else if(getCharMap()[i][j]!=' '){
+					map+= getCharMap()[i][j];
+				}else{
+					map += " ";
+				}
+			}
+			map += "|#\n";
+			
+			for(int j=mapX-1;j>=0;j--){
+				map += "##";
+			}
+			map += "###\n";
+		}
+		System.out.println();
+		
+		System.out.println(map);
+	}
+	
+	
+	public void printMap(char[][] map){
+		for(int i = 0; i < map.length; i++)
+		{
+			printSeparator();
+			System.out.print("#|");
+			for(int j = 0; j < map[i].length; j++)
+			{
+				if (map[i][j] == 'E')
+					System.out.print(' ');
+				else
+					System.out.print(map[i][j]); 
+				System.out.print('|'); 
+			}
+			System.out.println("#");
+		}
+		printSeparator();
+	}
+	
+	private static void printSeparator(){
+		for (int i=0; i<45; i++)
+			System.out.print('#');
+		System.out.println();
+	}
+	
+	public static void main(String[] arg) throws FileNotFoundException, IOException
+	{
+		String file = "FinalMap2.txt";
+		Map test = new Map(21,11);
+		test.importMap(file);
+		Character player = new Character("lonk", "test");
+		
+		test.printMap(player);
+		/*
+		for(int i=0;i<test.getCharMap().length;i++){
+			System.out.println();
+			for(int j=0;j<test.getCharMap()[i].length;j++){
+				System.out.print(test.getCharMap()[i][j]);
+			}
+		}*/
+		//test.printMap(test.getCharMap());
+	}
+	
+	
+	
+	
 	public Map(int mapX, int mapY)
 	{
 		this.mapX = mapX;
 		this.mapY = mapY;
+		this.charMap = new char[mapX][mapY];
 		this.stringMap = new String[mapX][mapY];
 		this.itemMap = new Item[mapX][mapY];
 		this.equipmentMap = new Equipment[mapX][mapY];
@@ -22,6 +125,7 @@ public class Map
 	
 	public void setMapX(int newMapX){ this.mapX = newMapX; }
 	public void setMapY(int newMapY){ this.mapY = newMapY; }
+	public void setCharMap(char newCharMap[][]){ this.charMap = newCharMap; }
 	public void setStringMap(String newStringMap[][]){ this.stringMap = newStringMap; }
 	public void setItemMap(Item[][] newItemMap){ this.itemMap = newItemMap; }
 	public void setEquipmentMap(Equipment[][] newEquipmentMap){ this.equipmentMap = newEquipmentMap; }
@@ -31,6 +135,7 @@ public class Map
 	public int getMapX(){ return this.mapX; }
 	public int getMapY(){ return this.mapY; }
 	public int[][] getIntMap(){ return this.intMap; }
+	public char[][] getCharMap(){ return this.charMap; }
 	public String[][] getStringMap(){ return this.stringMap; }
 	public Item[][] getItemMap(){ return this.itemMap; }
 	public Equipment[][] getEquipmentMap(){ return this.equipmentMap; }
@@ -122,31 +227,5 @@ public class Map
 		}
 	}
 	
-	public void printMap(Character player)
-	{
-		for(int i=0;i<mapX;i++){
-			System.out.print("##");
-		}
-		System.out.println("###");
-		
-		for(int i=mapY-1;i>=0;i--){
-			System.out.print("#");
-			
-			for(int j=mapX-1;j>=0;j--){
-				if(player.getPositionX()==j&&player.getPositionY()==i){
-					System.out.print("|P");
-				}else{
-					System.out.print("| ");
-				}
-			}
-			System.out.println("|#");	
-			
-			for(int j=mapX-1;j>=0;j--){
-				System.out.print("##");
-			}
-			System.out.println("###");
-		}
-		System.out.println();
-	}
 	
 }
