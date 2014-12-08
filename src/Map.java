@@ -17,7 +17,6 @@ public class Map
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String line = "";
 		
-		//11x21
 		char [][] newMap = new char[mapY][mapX];
 		for(int i = 0; i < mapY; i++){ 
 			line = reader.readLine();
@@ -64,52 +63,6 @@ public class Map
 		
 		System.out.println(map);
 	}
-	
-	
-	public void printMap(char[][] map){
-		for(int i = 0; i < map.length; i++)
-		{
-			printSeparator();
-			System.out.print("#|");
-			for(int j = 0; j < map[i].length; j++)
-			{
-				if (map[i][j] == 'E')
-					System.out.print(' ');
-				else
-					System.out.print(map[i][j]); 
-				System.out.print('|'); 
-			}
-			System.out.println("#");
-		}
-		printSeparator();
-	}
-	
-	private static void printSeparator(){
-		for (int i=0; i<45; i++)
-			System.out.print('#');
-		System.out.println();
-	}
-	
-	public static void main(String[] arg) throws FileNotFoundException, IOException
-	{
-		String file = "FinalMap2.txt";
-		Map test = new Map(21,11);
-		test.importMap(file);
-		Character player = new Character("lonk", "test");
-		
-		test.printMap(player);
-		/*
-		for(int i=0;i<test.getCharMap().length;i++){
-			System.out.println();
-			for(int j=0;j<test.getCharMap()[i].length;j++){
-				System.out.print(test.getCharMap()[i][j]);
-			}
-		}*/
-		//test.printMap(test.getCharMap());
-	}
-	
-	
-	
 	
 	public Map(int mapX, int mapY)
 	{
@@ -167,6 +120,7 @@ public class Map
 		System.out.println("("+x+","+y+")");
 		System.out.println();
 		
+		/*
 		if((x==17 || x==18 || x==19 || x==20) && y == 0){
 			System.out.println("Error: Tree in the way! Move a different way!");
 			System.out.println();
@@ -175,7 +129,7 @@ public class Map
 		if((x==18 || x==19 || x==20) && y == 1){
 			System.out.println("Error: Tree in the way! Move a different way!");
 			System.out.println();
-		}
+		}*/
 		
 		
 		
@@ -219,7 +173,6 @@ public class Map
 			this.equipmentMap[x][y]=null;
 			System.out.println();
 		}
-		
 	}
 	
 	public void move(Character player, String move)
@@ -227,19 +180,21 @@ public class Map
 		int currPosY = player.getPositionY();
 		int currPosX = player.getPositionX();
 		
-		if(move=="up"&&currPosY-1<=mapX){
-			player.setPositionY(currPosY-1);
-		}else if(move=="left"&&currPosX-1<=mapY){
-			player.setPositionX(currPosX-1);
-		}else if(move=="down"&&currPosY+1>=0){
-			player.setPositionX(currPosY+1);
-		}else if(move=="right"&&currPosX+1>=0){
+		if(move=="down"&&currPosY+1<=mapX-1){
+			player.setPositionY(currPosY+1);
+		}else if(move=="right"&&currPosX+1<=mapY-1){
 			player.setPositionX(currPosX+1);
+		}else if(move=="up"&&currPosY-1>=0){
+			player.setPositionX(currPosY-1);
+		}else if(move=="left"&&currPosX-1>=0){
+			player.setPositionX(currPosX-1);
 		}else{
-			System.out.println("Error: Cannot move there");
+			System.out.println("Error: Cannot move "+move+" from here");
 			System.out.println();
+			return;
 		}
+		
+		printMap(player);
+		checkCollision(player);
 	}
-	
-	
 }
