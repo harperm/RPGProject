@@ -177,6 +177,15 @@ public class Map
 			System.out.println();
 		}
 		
+		if((x==19 || x==20) && y == 2){
+			System.out.println("Error: Tree in the way! Move a different way!");
+			System.out.println();
+		}
+		
+		if(x==20 && y == 3){
+			System.out.println("Error: Tree in the way! Move a different way!");
+			System.out.println();
+		}
 		
 		
 		if(this.stringMap[x][y]!=null){
@@ -227,13 +236,13 @@ public class Map
 		int currPosY = player.getPositionY();
 		int currPosX = player.getPositionX();
 		
-		if(move=="up"&&currPosY-1<=mapX){
+		if(move=="up"&&currPosY-1>=0){
 			player.setPositionY(currPosY-1);
-		}else if(move=="left"&&currPosX-1<=mapY){
+		}else if(move=="left"&&currPosX-1>=0){
 			player.setPositionX(currPosX-1);
-		}else if(move=="down"&&currPosY+1>=0){
+		}else if(move=="down"&&currPosY+1<=mapY){
 			player.setPositionX(currPosY+1);
-		}else if(move=="right"&&currPosX+1>=0){
+		}else if(move=="right"&&currPosX+1<=mapX){
 			player.setPositionX(currPosX+1);
 		}else{
 			System.out.println("Error: Cannot move there");

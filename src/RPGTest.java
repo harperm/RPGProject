@@ -71,7 +71,7 @@ public class RPGTest
 		String file = "FinalMap2.txt";
 		map.importMap(file);
 
-		map.place(player,15,0);
+		map.place(player,0,0);
 		map.place(questItem, 1,1);
 		map.place(enemy0,16,2);
 		map.place(enemy1,0,1);
