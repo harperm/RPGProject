@@ -91,7 +91,7 @@ public class RPGTest
 
 		map.checkCollision(player);
 		
-		/*
+		
 		while(true)
 		{
 			System.out.print("Command: ");
@@ -103,8 +103,9 @@ public class RPGTest
 				System.out.println();
 				new Command(player,map,command,option);
 			}
-		}*/
+		}
 		
+		/*
 		map.move(player, "up");
 		map.move(player, "left");
 		map.move(player, "right");
@@ -120,6 +121,7 @@ public class RPGTest
 		map.move(player, "right");
 		map.move(player, "right");
 		map.move(player, "down");
+		*/
 
 		keyboard.close();
 		System.out.println();		
