@@ -125,34 +125,68 @@ public class Character
 		System.out.println("Defense: "+this.getDefense());
 		System.out.println("Speed: "+this.getSpeed());
 		System.out.println("Status: "+this.getStatus());
-		for(int i=0;i<this.getInventory().length;i++){
-			if(this.getInventory()[i]!=null){
-				System.out.println("Inventory"+i+": "+this.getInventory()[i].getName()+"("+this.getItemCount()[i]+")");
-			}
-		}
-		for(int i=0;i<this.getEquipped().length;i++){
-			if(this.getEquipped()[i]!=null){
-				System.out.println("Equipment"+i+": "+this.getEquipped()[i].getName());
-			}
-		}
-		for(int i=0;i<this.getAttacks().length;i++){
-			if(this.getAttacks()[i]!=null){
-				System.out.println("Attack"+i+": "+this.getAttacks()[i]+" ");
-			}
-		}
-		for(int i=0;i<this.getDialogs().length;i++){
-			if(this.getDialogs()[i]!=null){
-				System.out.println("Dialog"+i+": "+this.getDialogs()[i]+" ");
-			}
-		}
+		this.printInventory();
+		this.printEquipped();
+        this.printChest();
+		this.printAttacks();
+		this.printDialogs();
 		System.out.println("Position: ("+getPositionX()+","+getPositionY()+")");
 		System.out.println("Money: "+this.getMoney());
 		System.out.println();
 		System.out.println();
 	}
 	
+	public void printInventory()
+	{
+		for(int i=0;i<this.getInventory().length;i++){
+			if(this.getInventory()[i]!=null){
+				System.out.println("Inventory"+i+": "+this.getInventory()[i].getName()+"("+this.getItemCount()[i]+")");
+			}
+		}
+	}
 	
+	public void printEquipped()
+	{
+		for(int i=0;i<this.getEquipped().length;i++){
+			if(this.getEquipped()[i]!=null){
+				System.out.println("Equipment"+i+": "+this.getEquipped()[i].getName());
+			}
+		}
+	}
 	
+	public void printChest()
+	{
+		for(int i=0;i<this.getChest().length;i++){
+            if(this.getChest()[i]!=null){
+                System.out.print("Chest"+i+": "+this.getChest()[i].getName());
+                for(int j=0;j<this.getEquipped().length;j++){
+                    if(this.getEquipped()[j]!=null){
+                        if(this.getEquipped()[j].getName().equals(this.getChest()[i].getName())){
+                            System.out.print("*");
+                        }
+                    }
+                }
+                System.out.println();
+            }
+        }
+	}
 	
+	public void printAttacks()
+	{
+		for(int i=0;i<this.getAttacks().length;i++){
+			if(this.getAttacks()[i]!=null){
+				System.out.println("Attack"+i+": "+this.getAttacks()[i]+" ");
+			}
+		}
+	}
+	
+	public void printDialogs()
+	{
+		for(int i=0;i<this.getDialogs().length;i++){
+			if(this.getDialogs()[i]!=null){
+				System.out.println("Dialog"+i+": "+this.getDialogs()[i]+" ");
+			}
+		}
+	}
 }
 

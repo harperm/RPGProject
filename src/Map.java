@@ -195,6 +195,6 @@ public class Map
 		}
 		
 		printMap(player);
-		checkCollision(player);
+		//checkCollision(player);
 	}
 }

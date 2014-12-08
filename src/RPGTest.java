@@ -42,6 +42,7 @@ public class RPGTest
 		//Character player1 = new Character("bob","mage");
 		//Character player2 = new Character("zio","thief");
 
+		/*
 		Enemy enemy0 = new Enemy("Orc","warrior",1,80,150,0,80,60,null,null,null,null);
 		Enemy enemy1 = new Enemy("Elf","mage",1,80,150,0,80,60,null,null,null,null);
 		Enemy enemy2 = new Enemy("Hafling","thief",1,80,150,0,80,60,null,null,null,null);
@@ -52,25 +53,33 @@ public class RPGTest
 		NPC npc0 = new NPC("grand wizard","npc","hello","welcome, adventurer","i am here to guide you","start of by finding the magic crystal",null);
 		NPC npc1 = new NPC("grand wizard", "npc" ,"to complete this quest you must","bring the magic crystal ","to the emperor",null,null);
 		NPC npc2 = new NPC("emperor", "npc","You found me!","and you have the magic cyrstal",null,null,null);
+		*/
 		
 		Equipment sword0 = new Equipment("rookie blade","weapon","strength",10);
 		Equipment sword1 = new Equipment("test blade","weapon","strength",5);
-
+		Equipment sword2 = new Equipment("ironforge blade","weapon","strength",20);
+		Equipment helm0 = new Equipment("bronze helmet","head","defese",5);
+		Equipment helm1 = new Equipment("iron helmet","head","defese",15);
+		
+		/*
 		Potion smallHealth = new Potion("small health potion","health",10);
 		Potion smallStamina = new Potion("small stamina potion", "health", 15);
 		Potion smallMana = new Potion("small mana potion", "mana", 5);
-
+		
 		Item questItem = new Item("magic crystal", npc2);
-
-		sword0.equip(player);
-		map.place("Welcome to the RPG!",0,0);
+		*/
 		
 		player.printCharacter();
 		
+		
 		String file = "FinalMap2.txt";
 		map.importMap(file);
-
-		map.place(player,0,0);
+		map.printMap(player);
+		map.checkCollision(player);
+		
+		/*
+		map.place("Welcome to the RPG!",0,0);
+		map.place(player,20,10);
 		map.place(questItem, 1,1);
 		map.place(enemy0,16,2);
 		map.place(enemy1,0,1);
@@ -86,12 +95,10 @@ public class RPGTest
 		map.place(smallHealth,0,0);
 		map.place(smallStamina, 10, 4);
 		map.place(smallMana, 11, 7);
-
-		map.printMap(player);
-
-		map.checkCollision(player);
+		*/
 		
 		
+		/*
 		while(true)
 		{
 			System.out.print("Command: ");
@@ -104,6 +111,7 @@ public class RPGTest
 				new Command(player,map,command,option);
 			}
 		}
+		*/
 		
 		/*
 		map.move(player, "up");
@@ -122,10 +130,12 @@ public class RPGTest
 		map.move(player, "right");
 		map.move(player, "down");
 		*/
-
+		
+		/*
 		keyboard.close();
 		System.out.println();		
 		System.out.println("You completed the game!");
 		System.out.println("Congradulations!");
+		*/
 	}
 }

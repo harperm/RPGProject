@@ -1,4 +1,4 @@
-//equipped slots are as follows: weapon, head, chest, legs, boots, ring, ring
+//equipped slots are as follows: weapon, head, chest, legs, boots, ring, amulet
 
 public class Equipment
 {
@@ -74,7 +74,7 @@ public class Equipment
 	public void add(Character player)
 	{		
 		for(int i=0;i<player.getChest().length;i++){
-			if(player.getChest()[i]!=null){
+			if(player.getChest()[i]==null){
 				player.setChestItem(this, i);
 				System.out.println(player.getChest()[i].getName()+" added");
 				break;
@@ -82,6 +82,7 @@ public class Equipment
 				System.out.println("Sorry, there is no room for that");
 			}
 		}
+		System.out.println();
 	}
 	
 	
@@ -91,13 +92,41 @@ public class Equipment
 	{	
     	for(int i=0;i<player.getChest().length;i++){
     		if(player.getChest()[i]!=null){
-				if(!player.getChest()[i].getName().equals(this.name) && i==player.getChest().length-1){
-					System.out.println("Item not found");
-					break;
-				}
+                if(!player.getChest()[i].getName().equals(this.name) && i==player.getChest().length-1){
+                	System.out.println("Equipment not found");
+                    System.out.println();
+                    return;
+                }else{
+                	break;
+                }
+            }else{
+                if(i==player.getChest().length-1){
+                    System.out.println("Chest empty");
+                    System.out.println();
+                    return;
+                }
     		}
     	}
-    	
+        int slot = 0;
+        if(this.getType().equals("weapon")){ slot = 0; }
+        else if(this.getType().equals("head")){ slot = 1; }
+        else if(this.getType().equals("chest")){ slot = 2; }
+        else if(this.getType().equals("legs")){ slot = 3; }
+        else if(this.getType().equals("boots")){ slot = 4; }
+        else if(this.getType().equals("ring")){ slot = 5; }
+        else if(this.getType().equals("amulet")){ slot = 6; }
+        else{ System.out.println("Error: Type not found"); return; }
+        
+        if(player.getEquipped()[slot]!=null){
+            player.getEquipped()[slot].unequip(player);
+        }
+        
+        //player.setChestItem(this, i);
+        player.setEquippedItem(this, slot);
+        System.out.println(this.getName()+" equipped");
+        System.out.println();
+        
+        /*
 		for(int i=0;i<player.getEquipped().length;i++){
 			if(player.getEquipped()[i]==null){
 				player.setEquippedItem(this, i);
@@ -117,6 +146,7 @@ public class Equipment
 				System.out.println();
 			}
 		}
+		*/
 	}
 	
 	public void unequip(Character player)
