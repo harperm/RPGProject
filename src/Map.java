@@ -18,10 +18,10 @@ public class Map
 		String line = "";
 		
 		//11x21
-		char [][] newMap = new char[11][21];
-		for(int i = 0; i < newMap.length; i++){ 
+		char [][] newMap = new char[mapY][mapX];
+		for(int i = 0; i < mapY; i++){ 
 			line = reader.readLine();
-			for(int j = 0; j < newMap[i].length; j++){
+			for(int j = 0; j < mapX; j++){
 				if (line.length() >= 2){
 					newMap[i][j] = line.charAt(j);
 				}
@@ -40,10 +40,10 @@ public class Map
 		}
 		map += "###\n";
 		
-		for(int i=mapY-1;i>=0;i--){
+		for(int i=0;i<mapY;i++){
 			map += "#";
 			
-			for(int j=mapX-1;j>=0;j--){
+			for(int j=0;j<mapX;j++){
 				map+= '|';
 				if(player.getPositionX()==j&&player.getPositionY()==i){
 					map += "P";
@@ -167,10 +167,23 @@ public class Map
 		System.out.println("("+x+","+y+")");
 		System.out.println();
 		
+		if((x==17 || x==18 || x==19 || x==20) && y == 0){
+			System.out.println("Error: Tree in the way! Move a different way!");
+			System.out.println();
+		}
+		
+		if((x==18 || x==19 || x==20) && y == 1){
+			System.out.println("Error: Tree in the way! Move a different way!");
+			System.out.println();
+		}
+		
+		
+		
 		if(this.stringMap[x][y]!=null){
 			System.out.println(this.stringMap[x][y]);
 			System.out.println();
 		}
+		
 		
 		if(this.enemyMap[x][y]!=null){
 			System.out.println("A "+this.enemyMap[x][y].getRole()+" "+this.enemyMap[x][y].getName()+" has appeared!");
@@ -183,7 +196,7 @@ public class Map
 			System.out.println("("+x+","+y+")");
 			System.out.println();
 		}
-		
+
 		if(this.NPCMap[x][y]!=null){
 			for(int i=0;i<this.NPCMap[x][y].getDialogs().length;i++){
 				if(this.NPCMap[x][y].getDialogs()[i]!=null){
@@ -206,6 +219,7 @@ public class Map
 			this.equipmentMap[x][y]=null;
 			System.out.println();
 		}
+		
 	}
 	
 	public void move(Character player, String move)

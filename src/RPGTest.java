@@ -51,56 +51,27 @@ public class RPGTest
 
 		NPC npc0 = new NPC("grand wizard","npc","hello","welcome, adventurer","i am here to guide you","start of by finding the magic crystal",null);
 		NPC npc1 = new NPC("grand wizard", "npc" ,"to complete this quest you must","bring the magic crystal ","to the emperor",null,null);
-
+		NPC npc2 = new NPC("emperor", "npc","You found me!","and you have the magic cyrstal",null,null,null);
+		
 		Equipment sword0 = new Equipment("rookie blade","weapon","strength",10);
 		Equipment sword1 = new Equipment("test blade","weapon","strength",5);
 
 		Potion smallHealth = new Potion("small health potion","health",10);
 		Potion smallStamina = new Potion("small stamina potion", "health", 15);
-		Potion smallMana = new Potion("small mana potion", "health", 5);
+		Potion smallMana = new Potion("small mana potion", "mana", 5);
 
-		Item questItem = new Item("magic crystal");
+		Item questItem = new Item("magic crystal", npc2);
 
 		sword0.equip(player);
 		map.place("Welcome to the RPG!",0,0);
 		
 		player.printCharacter();
 		
-		/*
-		BufferedReader reader = new BufferedReader(new FileReader("FinalMap2.txt"));
-		String line = "";
 
-		//11x21
-		char[][] newMap = new char[11][21];
-		while(line != null)
-		{
-
-			for(int i = 0; i < newMap.length; i++)
-			{ 
-				line = reader.readLine();
-				if (line != null)
-				{
-					for (int j = 0; j < newMap[i].length; j++){
-						if (line.length() >= 2){
-							newMap[i][j] = line.charAt(j);
-						}
-					}
-				}
-				else
-					break;
-			}
-
-		}
-
-		reader.close();
-		
-
-		RPGTest.printMap(newMap);
-	*/
 		String file = "FinalMap2.txt";
 		map.importMap(file);
 
-		map.place(player,0,0);
+		map.place(player,15,0);
 		map.place(questItem, 1,1);
 		map.place(enemy0,16,2);
 		map.place(enemy1,0,1);
@@ -110,6 +81,8 @@ public class RPGTest
 		map.place(enemy5,16,8);
 		map.place(npc0,1,0);
 		map.place(npc1, 1, 1);
+		map.place(npc2, 19, 10);
+		//map.place(npc2, 5, 1);
 		map.place(sword1,0,0);
 		map.place(smallHealth,0,0);
 		map.place(smallStamina, 10, 4);
@@ -119,6 +92,8 @@ public class RPGTest
 		map.printMap(player);
 
 		map.checkCollision(player);
+		
+	
 
 		while(true)
 		{
@@ -140,6 +115,7 @@ public class RPGTest
 	}
 	
 	public static void printMap(char[][] map){
+		
 		for(int i = 0; i < map.length; i++)
 		{
 			printSeparator();
