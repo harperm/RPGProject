@@ -1,0 +1,6 @@
+Orc,warrior,1,80,150,0,80,60,null,null,null,null
+Elf,mage,1,80,150,0,80,60,null,null,null,null
+Hafling,thief,1,80,150,0,80,60,null,null,null,null
+Orc,warrior,1,80,150,0,80,60,null,null,null,null
+Human,mage,1,80,150,0,80,60,null,null,null,null
+Elf,thief,1,80,150,0,80,60,null,null,null,null
