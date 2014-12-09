@@ -28,7 +28,7 @@
  * 
  */
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 
 public class RPGTest
 {
@@ -38,6 +38,43 @@ public class RPGTest
 
 		Map map = new Map(21,11);
 
+		BufferedReader reader = new BufferedReader(new FileReader("CharacterObjects.txt"));
+		String line = null;
+		while((line = reader.readLine()) != null)
+		 {
+		  ArrayList<String> T = new ArrayList<String>();
+		  
+		  while(true)
+		   {
+		    if(line.indexOf(",") == -1)//at the end of the string
+		     {
+		      T.add(line.substring(0, line.length()));
+		      break;
+		     }
+		    else
+		     {
+		      T.add(line.substring(0, line.indexOf(",")));
+		      line = line.substring(line.indexOf(",") + 1, line.length());
+		     }
+      	   }
+		  Enemy temp = new Enemy(T.get(0),T.get(1),Integer.parseInt(T.get(2)),Integer.parseInt(T.get(3)),Integer.parseInt(T.get(4)),Integer.parseInt(T.get(5)),Integer.parseInt(T.get(6)),Integer.parseInt(T.get(7)),T.get(8),T.get(9),T.get(10),T.get(11));
+		  
+		  Random n = new Random();
+		  while(true)
+		   { 
+		    int posX = n.nextInt(21);
+		    int posY = n.nextInt(11);
+		  
+		    if(map.validPosition(posX,posY) == true)
+		     {
+		      map.place(temp, posX, posY);
+		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where the enemys actually are 
+		      break;
+		     }
+		   }
+		  
+		 }
+		
 		Character player = new Character("lonk","warrior");
 		//Character player1 = new Character("bob","mage");
 		//Character player2 = new Character("zio","thief");
