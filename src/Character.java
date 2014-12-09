@@ -140,13 +140,41 @@ public class Character
 	{
 		for(int i=0;i<this.getInventory().length;i++){
 			if(this.getInventory()[i]!=null){
+				break;
+			}else{
+				if(i==this.getInventory().length-1){
+					System.out.println("Inventory: Empty");
+					return;
+				}
+			}
+		}
+		
+		for(int i=0;i<this.getInventory().length;i++){
+			if(this.getInventory()[i]!=null){
 				System.out.println("Inventory"+i+": "+this.getInventory()[i].getName()+"("+this.getItemCount()[i]+")");
 			}
 		}
+		
+		
+		
+		
+		
+		
 	}
 	
 	public void printEquipped()
 	{
+		for(int i=0;i<this.getEquipped().length;i++){
+			if(this.getEquipped()[i]!=null){
+				break;
+			}else{
+				if(i==this.getEquipped().length-1){
+					System.out.println("Equipped: Empty");
+					return;
+				}
+			}
+		}
+		
 		for(int i=0;i<this.getEquipped().length;i++){
 			if(this.getEquipped()[i]!=null){
 				System.out.println("Equipment"+i+": "+this.getEquipped()[i].getName());
@@ -156,6 +184,17 @@ public class Character
 	
 	public void printChest()
 	{
+		for(int i=0;i<this.getChest().length;i++){
+			if(this.getChest()[i]!=null){
+				break;
+			}else{
+				if(i==this.getChest().length-1){
+					System.out.println("Chest: Empty");
+					return;
+				}
+			}
+		}
+		
 		for(int i=0;i<this.getChest().length;i++){
             if(this.getChest()[i]!=null){
                 System.out.print("Chest"+i+": "+this.getChest()[i].getName());
@@ -175,6 +214,17 @@ public class Character
 	{
 		for(int i=0;i<this.getAttacks().length;i++){
 			if(this.getAttacks()[i]!=null){
+				break;
+			}else{
+				if(i==this.getAttacks().length-1){
+					System.out.println("Attacks: Empty");
+					return;
+				}
+			}
+		}
+		
+		for(int i=0;i<this.getAttacks().length;i++){
+			if(this.getAttacks()[i]!=null){
 				System.out.println("Attack"+i+": "+this.getAttacks()[i]+" ");
 			}
 		}
@@ -184,7 +234,22 @@ public class Character
 	{
 		for(int i=0;i<this.getDialogs().length;i++){
 			if(this.getDialogs()[i]!=null){
+				break;
+			}else{
+				if(i==this.getDialogs().length-1){
+					System.out.println("Dialogs: Empty");
+					return;
+				}
+			}
+		}
+		
+		for(int i=0;i<this.getDialogs().length;i++){
+			if(this.getDialogs()[i]!=null){
 				System.out.println("Dialog"+i+": "+this.getDialogs()[i]+" ");
+			}else{
+				if(i==this.getDialogs().length-1){
+                    System.out.println("Dialogs: Empty");
+                }
 			}
 		}
 	}

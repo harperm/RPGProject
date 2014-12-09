@@ -179,21 +179,19 @@ public class Map
 	{
 		int currPosY = player.getPositionY();
 		int currPosX = player.getPositionX();
-		
-		if(move=="down"&&currPosY+1<=mapX-1){
+		if(move.equals("down")&&currPosY+1<=mapY-1){
 			player.setPositionY(currPosY+1);
-		}else if(move=="right"&&currPosX+1<=mapY-1){
+		}else if(move.equals("right")&&currPosX+1<=mapX-1){
 			player.setPositionX(currPosX+1);
-		}else if(move=="up"&&currPosY-1>=0){
-			player.setPositionX(currPosY-1);
-		}else if(move=="left"&&currPosX-1>=0){
+		}else if(move.equals("up")&&currPosY-1>=0){
+			player.setPositionY(currPosY-1);
+		}else if(move.equals("left")&&currPosX-1>=0){
 			player.setPositionX(currPosX-1);
 		}else{
 			System.out.println("Error: Cannot move "+move+" from here");
 			System.out.println();
 			return;
 		}
-		
 		printMap(player);
 		//checkCollision(player);
 	}

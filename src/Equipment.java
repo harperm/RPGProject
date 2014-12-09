@@ -93,7 +93,7 @@ public class Equipment
     	for(int i=0;i<player.getChest().length;i++){
     		if(player.getChest()[i]!=null){
                 if(!player.getChest()[i].getName().equals(this.name) && i==player.getChest().length-1){
-                	System.out.println("Equipment not found");
+                	System.out.println("Error: Equipment not found");
                     System.out.println();
                     return;
                 }else{
@@ -101,7 +101,7 @@ public class Equipment
                 }
             }else{
                 if(i==player.getChest().length-1){
-                    System.out.println("Chest empty");
+                    System.out.println("Error: Chest Empty");
                     System.out.println();
                     return;
                 }
