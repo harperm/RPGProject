@@ -72,6 +72,7 @@ public class RPGTest
 		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where the enemys actually are 
 		      break;
 		     }
+		    
 		   }
 		  
 		 }
@@ -112,6 +113,48 @@ public class RPGTest
 		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where the equipment actually are 
 		      break;
 		     }
+		    
+		   }
+		  
+		 }
+		
+		//--------------------------------------------------------------------------------------------------------
+		
+		BufferedReader reader2 = new BufferedReader(new FileReader("PotionObjects.txt"));
+		String line2 = null;
+		while((line2 = reader2.readLine()) != null)
+		 {
+		  ArrayList<String> T2 = new ArrayList<String>();
+		  
+		  while(true)
+		   {
+		    if(line2.indexOf(",") == -1)//at the end of the string
+		     {
+		      T2.add(line2.substring(0, line2.length()));
+		      break;
+		     }
+		    else
+		     {
+		      T2.add(line2.substring(0, line2.indexOf(",")));
+		      line2 = line2.substring(line2.indexOf(",") + 1, line2.length());
+		     }
+      	   }
+		     Potion temp = new Potion(T2.get(0), T2.get(1), Integer.parseInt(T2.get(2)));
+		  
+		  Random n2 = new Random();
+		  while(true)
+		   { 
+		    int posX = n2.nextInt(21);
+		    int posY = n2.nextInt(11);
+		  
+		    if(map.validPosition(posX,posY) == true)
+		     {
+		      map.place(temp, posX, posY);
+		      System.out.println("Potion: ");
+		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where potions actually are placed
+		      break;
+		     }
+		    
 		   }
 		  
 		 }
@@ -121,6 +164,7 @@ public class RPGTest
 		//Character player2 = new Character("zio","thief");
 
 		/*
+		 * Placed these randomly through an imported text file 
 		Enemy enemy0 = new Enemy("Orc","warrior",1,80,150,0,80,60,null,null,null,null);
 		Enemy enemy1 = new Enemy("Elf","mage",1,80,150,0,80,60,null,null,null,null);
 		Enemy enemy2 = new Enemy("Hafling","thief",1,80,150,0,80,60,null,null,null,null);
@@ -132,14 +176,14 @@ public class RPGTest
 		NPC npc1 = new NPC("grand wizard", "npc" ,"to complete this quest you must","bring the magic crystal ","to the emperor",null,null);
 		NPC npc2 = new NPC("emperor", "npc","You found me!","and you have the magic cyrstal",null,null,null);
 		
-		
+		* Placed these randomly through an imported text file
 		Equipment sword0 = new Equipment("rookie blade","weapon","strength",10);
 		Equipment sword1 = new Equipment("test blade","weapon","strength",5);
 		Equipment sword2 = new Equipment("ironforge blade","weapon","strength",20);
 		Equipment helm0 = new Equipment("bronze helmet","head","defese",5);
 		Equipment helm1 = new Equipment("iron helmet","head","defese",15);
 		
-		
+		* Placed these randomly through an imported text file
 		Potion smallHealth = new Potion("small health potion","health",10);
 		Potion smallStamina = new Potion("small stamina potion", "health", 15);
 		Potion smallMana = new Potion("small mana potion", "mana", 5);

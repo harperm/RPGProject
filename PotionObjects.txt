@@ -1,0 +1,3 @@
+small health potion,health,10
+small stamina potion,health,15
+small mana potion,mana,5
