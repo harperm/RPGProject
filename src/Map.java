@@ -95,6 +95,18 @@ public class Map
 	public Enemy[][] getEnemyMap(){ return this.enemyMap; }
 	public NPC[][] getNPCMap(){ return this.NPCMap; }
 	
+	public boolean validPosition(int x, int y)
+	 { 
+	  if(charMap[x][y] == '/' || charMap[x][y] == '~')
+	   {
+		return false;  
+	   }
+	  else
+	   {
+	    return true;
+	   }
+	 }
+	
 	public void place(Object object, int x, int y)
 	{
 		if(object instanceof String){
