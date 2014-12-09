@@ -68,7 +68,48 @@ public class RPGTest
 		    if(map.validPosition(posX,posY) == true)
 		     {
 		      map.place(temp, posX, posY);
+		      System.out.println("Enemy: ");
 		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where the enemys actually are 
+		      break;
+		     }
+		   }
+		  
+		 }
+		
+		//--------------------------------------------------------------------------------------------------------
+		
+		BufferedReader reader1 = new BufferedReader(new FileReader("EquipmentObjects.txt"));
+		String line1 = null;
+		while((line1 = reader1.readLine()) != null)
+		 {
+		  ArrayList<String> T1 = new ArrayList<String>();
+		  
+		  while(true)
+		   {
+		    if(line1.indexOf(",") == -1)//at the end of the string
+		     {
+		      T1.add(line1.substring(0, line1.length()));
+		      break;
+		     }
+		    else
+		     {
+		      T1.add(line1.substring(0, line1.indexOf(",")));
+		      line1 = line1.substring(line1.indexOf(",") + 1, line1.length());
+		     }
+      	   }
+		  Equipment temp = new Equipment(T1.get(0), T1.get(1), T1.get(2), Integer.parseInt(T1.get(3)));
+		  
+		  Random n1 = new Random();
+		  while(true)
+		   { 
+		    int posX = n1.nextInt(21);
+		    int posY = n1.nextInt(11);
+		  
+		    if(map.validPosition(posX,posY) == true)
+		     {
+		      map.place(temp, posX, posY);
+		      System.out.println("Equipment: ");
+		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where the equipment actually are 
 		      break;
 		     }
 		   }
