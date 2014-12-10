@@ -1,0 +1,1 @@
+grand wizard,npc,hello,welcome adventurer,i am here to guide you,start of by finding the magic crystal,grand wizard,npc,you much complete a quest to win the game,to complete this quest you must,bring the magic crystal ,to the emperor,emperor,npc,congrats,You found me!,and you have the magic cyrstal, great!

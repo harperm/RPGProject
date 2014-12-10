@@ -57,7 +57,7 @@ public class RPGTest
 		      line = line.substring(line.indexOf(",") + 1, line.length());
 		     }
       	   }
-		  Enemy temp = new Enemy(T.get(0),T.get(1),Integer.parseInt(T.get(2)),Integer.parseInt(T.get(3)),Integer.parseInt(T.get(4)),Integer.parseInt(T.get(5)),Integer.parseInt(T.get(6)),Integer.parseInt(T.get(7)),T.get(8),T.get(9),T.get(10),T.get(11));
+		  Enemy temp = new Enemy(T.get(0),T.get(1),Integer.parseInt(T.get(2)),Integer.parseInt(T.get(3)),Integer.parseInt(T.get(4)),Integer.parseInt(T.get(5)),Integer.parseInt(T.get(6)),Integer.parseInt(T.get(7)),null,null,null,null);
 		  
 		  Random n = new Random();
 		  while(true)
@@ -159,7 +159,86 @@ public class RPGTest
 		  
 		 }
 		
+		//--------------------------------------------------------------------------------------------------------
+		
+		BufferedReader reader3 = new BufferedReader(new FileReader("NPCObjects.txt"));
+		String line3 = null;
+		while((line3 = reader3.readLine()) != null)
+		 {
+		  ArrayList<String> T3 = new ArrayList<String>();
+		  
+		  while(true)
+		   {
+		    if(line3.indexOf(",") == -1)//at the end of the string
+		     {
+		      T3.add(line3.substring(0, line3.length()));
+		      break;
+		     }
+		    else
+		     {
+		      T3.add(line3.substring(0, line3.indexOf(",")));
+		      line3 = line3.substring(line3.indexOf(",") + 1, line3.length());
+		     }
+      	   }
+		     NPC temp  = new NPC(T3.get(0), T3.get(1),T3.get(2), T3.get(3),T3.get(4),T3.get(5), null);
+		     NPC temp1 = new NPC(T3.get(6), T3.get(7),T3.get(8), T3.get(9),T3.get(10),T3.get(11), null);
+		     NPC temp2 = new NPC(T3.get(12), T3.get(13),T3.get(14), T3.get(15),T3.get(16),T3.get(17), null);
+		     
+		     int posX= 5,posX1=4, posX2=10;
+		     int posY=0,posY1=1, posY2= 7;
+		  
+		    if(map.validPosition(posX,posY) == true)
+		     {
+		      map.place(temp, posX, posY);
+		      map.place(temp1, posX1, posY1);
+		      map.place(temp2, posX2, posY2);
+		      System.out.println("NPC: ");
+		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where NPC actually are placed
+		      break;
+		     }
+		  
+		 }
+		 
+		//--------------------------------------------------------------------------------------------------------
+		
+		BufferedReader reader4 = new BufferedReader(new FileReader("ItemQuestObjects.txt"));
+		String line4 = null;
+		while((line4 = reader4.readLine()) != null)
+		 {
+		  ArrayList<String> T4 = new ArrayList<String>();
+		  
+		  while(true)
+		   {
+		    if(line4.indexOf(",") == -1)//at the end of the string
+		     {
+		      T4.add(line4.substring(0, line4.length()));
+		      break;
+		     }
+		    else
+		     {
+		      T4.add(line4.substring(0, line4.indexOf(",")));
+		      line4 = line4.substring(line4.indexOf(",") + 1, line4.length());
+		     }
+      	   }
+		     Item temp = new Item(T4.get(0));
+		     
+		    int posX = 13;
+		    int posY = 7;
+		    if(map.validPosition(posX,posY) == true)
+		     {
+		      map.place(temp, posX, posY);
+		      System.out.println("Crystal: ");
+		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where the cyrstal is actually placed
+		      break;
+		     }
+		    
+		   
+		  
+		 }
+		
+		
 		Character player = new Character("lonk","warrior");
+		
 		//Character player1 = new Character("bob","mage");
 		//Character player2 = new Character("zio","thief");
 
@@ -171,7 +250,8 @@ public class RPGTest
 		Enemy enemy3 = new Enemy("Orc","warrior",1,80,150,0,80,60,null,null,null,null);
 		Enemy enemy4 = new Enemy("Human","mage",1,80,150,0,80,60,null,null,null,null);
 		Enemy enemy5 = new Enemy("Elf","thief",1,80,150,0,80,60,null,null,null,null);
-
+		
+		* Place in through imported text file
 		NPC npc0 = new NPC("grand wizard","npc","hello","welcome, adventurer","i am here to guide you","start of by finding the magic crystal",null);
 		NPC npc1 = new NPC("grand wizard", "npc" ,"to complete this quest you must","bring the magic crystal ","to the emperor",null,null);
 		NPC npc2 = new NPC("emperor", "npc","You found me!","and you have the magic cyrstal",null,null,null);
@@ -188,6 +268,7 @@ public class RPGTest
 		Potion smallStamina = new Potion("small stamina potion", "health", 15);
 		Potion smallMana = new Potion("small mana potion", "mana", 5);
 		
+		* Placed in through imported text fie
 		Item questItem = new Item("magic crystal", npc2);
 		
 		map.place("Welcome to the RPG!",0,0);
@@ -218,6 +299,7 @@ public class RPGTest
 		
 		map.checkCollision(player);
 		
+	
 		
 		while(true)
 		{
