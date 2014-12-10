@@ -27,223 +27,31 @@
  * Combat is done through Combat(player, enemy)
  * 
  */
+
 import java.io.*;
 import java.util.*;
 
 public class RPGTest
 {
-	public static void main(String[] args) throws FileNotFoundException, IOException
+	public static void main(String[] args) throws IOException
 	{
 		Scanner keyboard = new Scanner(System.in);
 
-		Map map = new Map(21,11);
+		String mapFile = "Level0.txt";
+		String enemiesFile = "EnemyObjects.txt";
+		String equipmentFile = "EquipmentObjects.txt";
+		String potionsFile = "PotionObjects.txt";
+		String questItemsFile = "ItemQuestObjects.txt";
+		String NPCFile = "NPCObjects.txt";
+		Level level0 = new Level(mapFile, enemiesFile, equipmentFile, potionsFile, questItemsFile, NPCFile);
 
-		BufferedReader reader = new BufferedReader(new FileReader("CharacterObjects.txt"));
-		String line = null;
-		while((line = reader.readLine()) != null)
-		 {
-		  ArrayList<String> T = new ArrayList<String>();
-		  
-		  while(true)
-		   {
-		    if(line.indexOf(",") == -1)//at the end of the string
-		     {
-		      T.add(line.substring(0, line.length()));
-		      break;
-		     }
-		    else
-		     {
-		      T.add(line.substring(0, line.indexOf(",")));
-		      line = line.substring(line.indexOf(",") + 1, line.length());
-		     }
-      	   }
-		  Enemy temp = new Enemy(T.get(0),T.get(1),Integer.parseInt(T.get(2)),Integer.parseInt(T.get(3)),Integer.parseInt(T.get(4)),Integer.parseInt(T.get(5)),Integer.parseInt(T.get(6)),Integer.parseInt(T.get(7)),null,null,null,null);
-		  
-		  Random n = new Random();
-		  while(true)
-		   { 
-		    int posX = n.nextInt(21);
-		    int posY = n.nextInt(11);
-		  
-		    if(map.validPosition(posX,posY) == true)
-		     {
-		      map.place(temp, posX, posY);
-		      System.out.println("Enemy: ");
-		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where the enemys actually are 
-		      break;
-		     }
-		    
-		   }
-		  
-		 }
-		
-		//--------------------------------------------------------------------------------------------------------
-		
-		BufferedReader reader1 = new BufferedReader(new FileReader("EquipmentObjects.txt"));
-		String line1 = null;
-		while((line1 = reader1.readLine()) != null)
-		 {
-		  ArrayList<String> T1 = new ArrayList<String>();
-		  
-		  while(true)
-		   {
-		    if(line1.indexOf(",") == -1)//at the end of the string
-		     {
-		      T1.add(line1.substring(0, line1.length()));
-		      break;
-		     }
-		    else
-		     {
-		      T1.add(line1.substring(0, line1.indexOf(",")));
-		      line1 = line1.substring(line1.indexOf(",") + 1, line1.length());
-		     }
-      	   }
-		  Equipment temp = new Equipment(T1.get(0), T1.get(1), T1.get(2), Integer.parseInt(T1.get(3)));
-		  
-		  Random n1 = new Random();
-		  while(true)
-		   { 
-		    int posX = n1.nextInt(21);
-		    int posY = n1.nextInt(11);
-		  
-		    if(map.validPosition(posX,posY) == true)
-		     {
-		      map.place(temp, posX, posY);
-		      System.out.println("Equipment: ");
-		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where the equipment actually are 
-		      break;
-		     }
-		    
-		   }
-		  
-		 }
-		
-		//--------------------------------------------------------------------------------------------------------
-		
-		BufferedReader reader2 = new BufferedReader(new FileReader("PotionObjects.txt"));
-		String line2 = null;
-		while((line2 = reader2.readLine()) != null)
-		 {
-		  ArrayList<String> T2 = new ArrayList<String>();
-		  
-		  while(true)
-		   {
-		    if(line2.indexOf(",") == -1)//at the end of the string
-		     {
-		      T2.add(line2.substring(0, line2.length()));
-		      break;
-		     }
-		    else
-		     {
-		      T2.add(line2.substring(0, line2.indexOf(",")));
-		      line2 = line2.substring(line2.indexOf(",") + 1, line2.length());
-		     }
-      	   }
-		     Potion temp = new Potion(T2.get(0), T2.get(1), Integer.parseInt(T2.get(2)));
-		  
-		  Random n2 = new Random();
-		  while(true)
-		   { 
-		    int posX = n2.nextInt(21);
-		    int posY = n2.nextInt(11);
-		  
-		    if(map.validPosition(posX,posY) == true)
-		     {
-		      map.place(temp, posX, posY);
-		      System.out.println("Potion: ");
-		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where potions actually are placed
-		      break;
-		     }
-		    
-		   }
-		  
-		 }
-		
-		//--------------------------------------------------------------------------------------------------------
-		
-		BufferedReader reader3 = new BufferedReader(new FileReader("NPCObjects.txt"));
-		String line3 = null;
-		while((line3 = reader3.readLine()) != null)
-		 {
-		  ArrayList<String> T3 = new ArrayList<String>();
-		  
-		  while(true)
-		   {
-		    if(line3.indexOf(",") == -1)//at the end of the string
-		     {
-		      T3.add(line3.substring(0, line3.length()));
-		      break;
-		     }
-		    else
-		     {
-		      T3.add(line3.substring(0, line3.indexOf(",")));
-		      line3 = line3.substring(line3.indexOf(",") + 1, line3.length());
-		     }
-      	   }
-		     NPC temp  = new NPC(T3.get(0), T3.get(1),T3.get(2), T3.get(3),T3.get(4),T3.get(5), null, false);
-		     NPC temp1 = new NPC(T3.get(6), T3.get(7),T3.get(8), T3.get(9),T3.get(10),T3.get(11), null, false);
-		     NPC temp2 = new NPC(T3.get(12), T3.get(13),T3.get(14), T3.get(15),T3.get(16),T3.get(17), null, true);
-		     
-		     int posX= 5,posX1=4, posX2=10;  //10
-		     int posY=0,posY1=1, posY2= 7;	//7
-		  
-		    if(map.validPosition(posX,posY) == true)
-		     {
-		      map.place(temp, posX, posY);
-		      map.place(temp1, posX1, posY1);
-		      map.place(temp2, posX2, posY2);
-		      System.out.println("NPC: ");
-		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where NPC actually are placed
-		      break;
-		     }
-		  
-		 }
-		 
-		//--------------------------------------------------------------------------------------------------------
-		
-		BufferedReader reader4 = new BufferedReader(new FileReader("ItemQuestObjects.txt"));
-		String line4 = null;
-		while((line4 = reader4.readLine()) != null)
-		 {
-		  ArrayList<String> T4 = new ArrayList<String>();
-		  
-		  while(true)
-		   {
-		    if(line4.indexOf(",") == -1)//at the end of the string
-		     {
-		      T4.add(line4.substring(0, line4.length()));
-		      break;
-		     }
-		    else
-		     {
-		      T4.add(line4.substring(0, line4.indexOf(",")));
-		      line4 = line4.substring(line4.indexOf(",") + 1, line4.length());
-		     }
-      	   }
-		     Item temp = new Item(T4.get(0));
-		     
-		    int posX = 13;	//13
-		    int posY = 7;	//7
-		    if(map.validPosition(posX,posY) == true)
-		     {
-		      map.place(temp, posX, posY);
-		      System.out.println("Crystal: ");
-		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where the cyrstal is actually placed
-		      break;
-		     }
-		    
-		   
-		  
-		 }
-		
-		
+		Map map = level0.getMap();
 		Character player = new Character("lonk","warrior");
-		
 		//Character player1 = new Character("bob","mage");
 		//Character player2 = new Character("zio","thief");
 
 		/*
-		 * Placed these randomly through an imported text file 
+		 // Placed these randomly through an imported text file 
 		Enemy enemy0 = new Enemy("Orc","warrior",1,80,150,0,80,60,null,null,null,null);
 		Enemy enemy1 = new Enemy("Elf","mage",1,80,150,0,80,60,null,null,null,null);
 		Enemy enemy2 = new Enemy("Hafling","thief",1,80,150,0,80,60,null,null,null,null);
@@ -256,7 +64,7 @@ public class RPGTest
 		NPC npc1 = new NPC("grand wizard", "npc" ,"to complete this quest you must","bring the magic crystal ","to the emperor",null,null);
 		NPC npc2 = new NPC("emperor", "npc","You found me!","and you have the magic cyrstal",null,null,null);
 		
-		* Placed these randomly through an imported text file
+		// Placed these randomly through an imported text file
 		Equipment sword0 = new Equipment("rookie blade","weapon","strength",10);
 		Equipment sword1 = new Equipment("test blade","weapon","strength",5);
 		Equipment sword2 = new Equipment("ironforge blade","weapon","strength",20);
@@ -293,8 +101,8 @@ public class RPGTest
 		
 		player.printCharacter();
 		
-		String file = "FinalMap2.txt";
-		map.importMap(file);
+		//String file = "FinalMap2.txt";
+		//map.importMap(file);
 		map.printMap(player);
 		
 		map.checkCollision(player);
@@ -308,7 +116,6 @@ public class RPGTest
 			if(command.equals("exit")){
 				break;
 			}else{
-				//String option = keyboard.next();
 				System.out.println();
 				new Command(player,map,command);
 			}
