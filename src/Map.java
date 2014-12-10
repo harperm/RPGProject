@@ -12,58 +12,6 @@ public class Map
 	private Enemy[][] enemyMap;
 	private NPC[][] NPCMap;
 	
-	public void importMap(String file) throws FileNotFoundException, IOException
-	{
-		BufferedReader reader = new BufferedReader(new FileReader(file));
-		String line = "";
-		
-		char [][] newMap = new char[mapY][mapX];
-		for(int i = 0; i < mapY; i++){ 
-			line = reader.readLine();
-			for(int j = 0; j < mapX; j++){
-				if (line.length() >= 2){
-					newMap[i][j] = line.charAt(j);
-				}
-			}
-		}
-		
-		setCharMap(newMap);
-		reader.close();
-	}
-	
-	public void printMap(Character player)
-	{
-		String map = "";
-		for(int i=0;i<mapX;i++){
-			map += "##";
-		}
-		map += "###\n";
-		
-		for(int i=0;i<mapY;i++){
-			map += "#";
-			
-			for(int j=0;j<mapX;j++){
-				map+= '|';
-				if(player.getPositionX()==j&&player.getPositionY()==i){
-					map += "P";
-				}else if(getCharMap()[i][j]!=' '){
-					map+= getCharMap()[i][j];
-				}else{
-					map += " ";
-				}
-			}
-			map += "|#\n";
-			
-			for(int j=mapX-1;j>=0;j--){
-				map += "##";
-			}
-			map += "###\n";
-		}
-		System.out.println();
-		
-		System.out.println(map);
-	}
-	
 	public Map(int mapX, int mapY)
 	{
 		this.mapX = mapX;
@@ -95,17 +43,29 @@ public class Map
 	public Enemy[][] getEnemyMap(){ return this.enemyMap; }
 	public NPC[][] getNPCMap(){ return this.NPCMap; }
 	
-	public boolean validPosition(int x, int y)
-	 { 
-	  if(charMap[x][y] == '/' || charMap[x][y] == '~')
-	   {
-		return false;  
-	   }
-	  else
-	   {
-	    return true;
-	   }
-	 }
+	
+
+	
+	public void printMap(Character player)
+	{
+		String map = "";
+		for(int i=0;i<mapX;i++){ map += "##"; }
+		map += "###\n";
+		for(int i=mapY-1;i>=0;i--){
+			map += "#";
+			for(int j=mapX-1;j>=0;j--){
+				map+= '|';
+				if(player.getPositionX()==j&&player.getPositionY()==i){ map += "P"; }
+				else if(getCharMap()[i][j]!=' '){ map+= getCharMap()[i][j]; }
+				else{ map += " "; }
+			}
+			map += "|#\n";
+			for(int j=mapX-1;j>=0;j--){ map += "##"; }
+			map += "###\n";
+		}
+		System.out.println();
+		System.out.println(map);
+	}
 	
 	public void place(Object object, int x, int y)
 	{
@@ -132,24 +92,10 @@ public class Map
 		System.out.println("("+x+","+y+")");
 		System.out.println();
 		
-		/*
-		if((x==17 || x==18 || x==19 || x==20) && y == 0){
-			System.out.println("Error: Tree in the way! Move a different way!");
-			System.out.println();
-		}
-		
-		if((x==18 || x==19 || x==20) && y == 1){
-			System.out.println("Error: Tree in the way! Move a different way!");
-			System.out.println();
-		}*/
-		
-		
-		
 		if(this.stringMap[x][y]!=null){
 			System.out.println(this.stringMap[x][y]);
 			System.out.println();
 		}
-		
 		
 		if(this.enemyMap[x][y]!=null){
 			System.out.println("A "+this.enemyMap[x][y].getRole()+" "+this.enemyMap[x][y].getName()+" has appeared!");
@@ -187,24 +133,31 @@ public class Map
 		}
 	}
 	
+	public boolean validPosition(int x, int y)
+	 {
+		//System.out.println("test"+(charMap[x][y] == '/' || charMap[x][y] == '~'));
+		if(charMap[x][y] == '/' || charMap[x][y] == '~'){ return false; }
+		else{ return true; }
+	 }
+	
 	public void move(Character player, String move)
 	{
-		int currPosY = player.getPositionY();
-		int currPosX = player.getPositionX();
-		if(move.equals("down")&&currPosY+1<=mapY-1){
-			player.setPositionY(currPosY+1);
-		}else if(move.equals("right")&&currPosX+1<=mapX-1){
-			player.setPositionX(currPosX+1);
-		}else if(move.equals("up")&&currPosY-1>=0){
-			player.setPositionY(currPosY-1);
-		}else if(move.equals("left")&&currPosX-1>=0){
-			player.setPositionX(currPosX-1);
-		}else{
+		int x = player.getPositionX();
+		int y = player.getPositionY();
+		
+		if(move.equals("up")&&y+1<=mapY-1){ y+=1; }
+		else if(move.equals("left")&&x+1<=mapX-1){ x+=1; }
+		else if(move.equals("down")&&y-1>=0){ y-=1; }
+		else if(move.equals("right")&&x-1>=0){ x-=1; }
+		else{
 			System.out.println("Error: Cannot move "+move+" from here");
 			System.out.println();
 			return;
 		}
+		
+		player.setPositionX(x);
+		player.setPositionY(y);
 		printMap(player);
-		//checkCollision(player);
+		checkCollision(player);
 	}
 }

@@ -8,7 +8,7 @@ public class Command
 		else if(command.equals("right")){ map.move(player,"right"); }
 		else if(command.equals("character")){ player.printCharacter(); }
 		else if(command.equals("inventory")){ player.printInventory(); }
-		else if(command.equals("equipped")){ player.printEquipped(); }
+		else if(command.equals("equipment") || command.equals("equipped")){ player.printEquipped(); }
 		else if(command.equals("chest")){ player.printChest(); }
 		else if(command.equals("attacks")){ player.printAttacks(); }
 		else{ System.out.println("Error: Command not valid"); }

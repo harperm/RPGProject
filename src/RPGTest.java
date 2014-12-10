@@ -27,6 +27,7 @@
  * Combat is done through Combat(player, enemy)
  * 
  */
+
 import java.io.*;
 import java.util.*;
 
@@ -35,92 +36,18 @@ public class RPGTest
 	public static void main(String[] args) throws FileNotFoundException, IOException
 	{
 		Scanner keyboard = new Scanner(System.in);
-
-		Map map = new Map(21,11);
-
-		BufferedReader reader = new BufferedReader(new FileReader("CharacterObjects.txt"));
-		String line = null;
-		while((line = reader.readLine()) != null)
-		 {
-		  ArrayList<String> T = new ArrayList<String>();
-		  
-		  while(true)
-		   {
-		    if(line.indexOf(",") == -1)//at the end of the string
-		     {
-		      T.add(line.substring(0, line.length()));
-		      break;
-		     }
-		    else
-		     {
-		      T.add(line.substring(0, line.indexOf(",")));
-		      line = line.substring(line.indexOf(",") + 1, line.length());
-		     }
-      	   }
-		  Enemy temp = new Enemy(T.get(0),T.get(1),Integer.parseInt(T.get(2)),Integer.parseInt(T.get(3)),Integer.parseInt(T.get(4)),Integer.parseInt(T.get(5)),Integer.parseInt(T.get(6)),Integer.parseInt(T.get(7)),T.get(8),T.get(9),T.get(10),T.get(11));
-		  
-		  Random n = new Random();
-		  while(true)
-		   { 
-		    int posX = n.nextInt(21);
-		    int posY = n.nextInt(11);
-		  
-		    if(map.validPosition(posX,posY) == true)
-		     {
-		      map.place(temp, posX, posY);
-		      System.out.println("Enemy: ");
-		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where the enemys actually are 
-		      break;
-		     }
-		   }
-		  
-		 }
-		
-		//--------------------------------------------------------------------------------------------------------
-		
-		BufferedReader reader1 = new BufferedReader(new FileReader("EquipmentObjects.txt"));
-		String line1 = null;
-		while((line1 = reader1.readLine()) != null)
-		 {
-		  ArrayList<String> T1 = new ArrayList<String>();
-		  
-		  while(true)
-		   {
-		    if(line1.indexOf(",") == -1)//at the end of the string
-		     {
-		      T1.add(line1.substring(0, line1.length()));
-		      break;
-		     }
-		    else
-		     {
-		      T1.add(line1.substring(0, line1.indexOf(",")));
-		      line1 = line1.substring(line1.indexOf(",") + 1, line1.length());
-		     }
-      	   }
-		  Equipment temp = new Equipment(T1.get(0), T1.get(1), T1.get(2), Integer.parseInt(T1.get(3)));
-		  
-		  Random n1 = new Random();
-		  while(true)
-		   { 
-		    int posX = n1.nextInt(21);
-		    int posY = n1.nextInt(11);
-		  
-		    if(map.validPosition(posX,posY) == true)
-		     {
-		      map.place(temp, posX, posY);
-		      System.out.println("Equipment: ");
-		      System.out.println("x: " + posX + "  y: " + posY); // used only to see where the equipment actually are 
-		      break;
-		     }
-		   }
-		  
-		 }
-		
 		Character player = new Character("lonk","warrior");
+		String mapFile = "FinalMap2.txt";
+		String charactersFile = "CharacterObjects.txt";
+		String equipmentFile = "EquipmentObjects.txt";
+		
+		Level level0 = new Level(mapFile, charactersFile, equipmentFile);
+		Map map = level0.getMap();
+		
 		//Character player1 = new Character("bob","mage");
 		//Character player2 = new Character("zio","thief");
 
-		/*
+		
 		Enemy enemy0 = new Enemy("Orc","warrior",1,80,150,0,80,60,null,null,null,null);
 		Enemy enemy1 = new Enemy("Elf","mage",1,80,150,0,80,60,null,null,null,null);
 		Enemy enemy2 = new Enemy("Hafling","thief",1,80,150,0,80,60,null,null,null,null);
@@ -146,6 +73,7 @@ public class RPGTest
 		
 		Item questItem = new Item("magic crystal", npc2);
 		
+		/*
 		map.place("Welcome to the RPG!",0,0);
 		map.place(player,0,0);
 		map.place(questItem, 1,1);
@@ -169,7 +97,7 @@ public class RPGTest
 		player.printCharacter();
 		
 		String file = "FinalMap2.txt";
-		map.importMap(file);
+		//map.importMap(file);
 		map.printMap(player);
 		
 		map.checkCollision(player);
