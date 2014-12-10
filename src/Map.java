@@ -136,11 +136,6 @@ public class Map
 		System.out.println("("+x+","+y+")");
 		System.out.println();
 
-
-
-
-
-
 		if(this.stringMap[x][y]!=null){
 			System.out.println(this.stringMap[x][y]);
 			System.out.println();
@@ -162,7 +157,12 @@ public class Map
 		if(this.NPCMap[x][y]!=null){
 			for(int i=0;i<this.NPCMap[x][y].getDialogs().length;i++){
 				if(this.NPCMap[x][y].getDialogs()[i]!=null){
-					System.out.println(this.NPCMap[x][y].getName()+": "+this.NPCMap[x][y].getDialogs()[i]);
+					if(this.NPCMap[x][y].getIsEmperor() && player.crystalCheck()){			
+						System.out.println("Congratulations, you have found me and brought me the magic crystal!");
+						System.out.println("You have won the game!");
+						System.exit(0);
+					}
+					else System.out.println(this.NPCMap[x][y].getName()+": "+this.NPCMap[x][y].getDialogs()[i]);
 				}
 			}
 			System.out.println();
@@ -187,13 +187,13 @@ public class Map
 	{
 		int currPosY = player.getPositionY();
 		int currPosX = player.getPositionX();
-		if(move.equals("down")&&currPosY+1<=mapY-1){// && checkPlayerMove("down", currPosX, currPosY)){
+		if(move.equalsIgnoreCase("down") && currPosY+1<=mapY-1  && checkPlayerMove("down", currPosX, currPosY+1)){
 			player.setPositionY(currPosY+1);
-		}else if(move.equals("right")&&currPosX+1<=mapX-1){// && checkPlayerMove("right", currPosX, currPosY)){
+		}else if(move.equalsIgnoreCase("right") && currPosX+1<=mapX-1 && checkPlayerMove("right", currPosX+2, currPosY)){
 			player.setPositionX(currPosX+1);
-		}else if(move.equals("up")&&currPosY-1>=0 ){// && checkPlayerMove("up", currPosX, currPosY)){
+		}else if(move.equalsIgnoreCase("up") && currPosY-1>=0 && checkPlayerMove("up", currPosX, currPosY-1)){
 			player.setPositionY(currPosY-1);
-		}else if(move.equals("left")&&currPosX-1>=0 ){// && checkPlayerMove("left", currPosX, currPosY)){
+		}else if(move.equalsIgnoreCase("left")&&currPosX-1>=0 && checkPlayerMove("left", currPosX-1, currPosY)){
 			player.setPositionX(currPosX-1);
 		}else{
 			System.out.println("Error: Cannot move "+move+" from here");
@@ -205,20 +205,20 @@ public class Map
 
 	}
 
-	/*public boolean checkPlayerMove(String move, int y, int x){
+	public boolean checkPlayerMove(String move, int y, int x){
 		if(move.equals("left") && (charMap[x-1][y] == '/' || charMap[x-1][y] == '~')){	
-			return false;	//change +1
+			return false;
 		}
-		if(move.equals("right") && (charMap[x+1][y] == '/' || charMap[x+1][y] == '~')){	
+		else if(move.equals("right") && (charMap[x+1][y] == '/' || charMap[x+1][y] == '~')){	
 			return false;	 // change to -1
 		}
-		if(move.equals("up") && (charMap[x][y-1] == '/' || charMap[x][y-1] == '~')){	
+		else if(move.equals("up") && (charMap[x][y-1] == '/' || charMap[x][y-1] == '~')){	
 			return false;	
 		}
-		if(move.equals("down") && (charMap[x][y+1] == '/' || charMap[x][y+1] == '~')){
+		else if(move.equals("down") && (charMap[x][y+1] == '/' || charMap[x][y+1] == '~')){
 			return false;
 		}
 		else
 			return true;
-	}*/
+	}
 }

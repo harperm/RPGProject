@@ -15,7 +15,7 @@ public class Character
 	private int positionX;
 	private int positionY;
 	private int money;
-	
+
 	//player
 	public Character(String name, String role)
 	{
@@ -25,7 +25,7 @@ public class Character
 		this.experience = 0;
 		this.maxHealth = 100;
 		this.health = this.maxHealth;
-		
+
 		if(role.equals("warrior")){
 			this.maxMana = 0;
 			this.strength = 100;
@@ -35,7 +35,7 @@ public class Character
 			this.attacks[1] = "charge";
 			this.attacks[2] = "slash";
 		}
-		
+
 		if(role.equals("mage")){
 			this.maxMana = 300;
 			this.strength = 100;
@@ -45,7 +45,7 @@ public class Character
 			this.attacks[1] = "lightning";
 			this.attacks[2] = "fireball";
 		}
-		
+
 		if(role.equals("thief")){
 			this.maxMana = 0;
 			this.strength = 80;
@@ -55,12 +55,12 @@ public class Character
 			this.attacks[1] = "throw";
 			this.attacks[2] = "stab";
 		}
-		
+
 		this.mana = maxMana;
 		this.status = null;
 		this.money = 0;
 	}
-	
+
 	//setters
 	public void setName(String newName){ this.name = newName; }
 	public void setRole(String newRole){ this.role = newRole; }
@@ -86,7 +86,7 @@ public class Character
 	public void setPositionX(int newPositionX){ this.positionX = newPositionX; }
 	public void setPositionY(int newPositionY){ this.positionY = newPositionY; }
 	public void setMoney(int newMoney){ this.money = newMoney; }
-	
+
 	//getters
 	public String getName(){ return this.name; }
 	public String getRole(){ return this.role; }
@@ -109,7 +109,7 @@ public class Character
 	public int getPositionX(){ return this.positionX; }
 	public int getPositionY(){ return this.positionY; }
 	public int getMoney(){ return this.money; }
-	
+
 	//prints character
 	public void printCharacter()
 	{
@@ -127,7 +127,7 @@ public class Character
 		System.out.println("Status: "+this.getStatus());
 		this.printInventory();
 		this.printEquipped();
-        this.printChest();
+		this.printChest();
 		this.printAttacks();
 		this.printDialogs();
 		System.out.println("Position: ("+getPositionX()+","+getPositionY()+")");
@@ -135,7 +135,7 @@ public class Character
 		System.out.println();
 		System.out.println();
 	}
-	
+
 	public void printInventory()
 	{
 		for(int i=0;i<this.getInventory().length;i++){
@@ -148,20 +148,20 @@ public class Character
 				}
 			}
 		}
-		
+
 		for(int i=0;i<this.getInventory().length;i++){
 			if(this.getInventory()[i]!=null){
 				System.out.println("Inventory"+i+": "+this.getInventory()[i].getName()+"("+this.getItemCount()[i]+")");
 			}
 		}
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
 	}
-	
+
 	public void printEquipped()
 	{
 		for(int i=0;i<this.getEquipped().length;i++){
@@ -174,14 +174,14 @@ public class Character
 				}
 			}
 		}
-		
+
 		for(int i=0;i<this.getEquipped().length;i++){
 			if(this.getEquipped()[i]!=null){
 				System.out.println("Equipment"+i+": "+this.getEquipped()[i].getName());
 			}
 		}
 	}
-	
+
 	public void printChest()
 	{
 		for(int i=0;i<this.getChest().length;i++){
@@ -194,22 +194,22 @@ public class Character
 				}
 			}
 		}
-		
+
 		for(int i=0;i<this.getChest().length;i++){
-            if(this.getChest()[i]!=null){
-                System.out.print("Chest"+i+": "+this.getChest()[i].getName());
-                for(int j=0;j<this.getEquipped().length;j++){
-                    if(this.getEquipped()[j]!=null){
-                        if(this.getEquipped()[j].getName().equals(this.getChest()[i].getName())){
-                            System.out.print("*");
-                        }
-                    }
-                }
-                System.out.println();
-            }
-        }
+			if(this.getChest()[i]!=null){
+				System.out.print("Chest"+i+": "+this.getChest()[i].getName());
+				for(int j=0;j<this.getEquipped().length;j++){
+					if(this.getEquipped()[j]!=null){
+						if(this.getEquipped()[j].getName().equals(this.getChest()[i].getName())){
+							System.out.print("*");
+						}
+					}
+				}
+				System.out.println();
+			}
+		}
 	}
-	
+
 	public void printAttacks()
 	{
 		for(int i=0;i<this.getAttacks().length;i++){
@@ -222,14 +222,14 @@ public class Character
 				}
 			}
 		}
-		
+
 		for(int i=0;i<this.getAttacks().length;i++){
 			if(this.getAttacks()[i]!=null){
 				System.out.println("Attack"+i+": "+this.getAttacks()[i]+" ");
 			}
 		}
 	}
-	
+
 	public void printDialogs()
 	{
 		for(int i=0;i<this.getDialogs().length;i++){
@@ -242,16 +242,23 @@ public class Character
 				}
 			}
 		}
-		
+
 		for(int i=0;i<this.getDialogs().length;i++){
 			if(this.getDialogs()[i]!=null){
 				System.out.println("Dialog"+i+": "+this.getDialogs()[i]+" ");
 			}else{
 				if(i==this.getDialogs().length-1){
-                    System.out.println("Dialogs: Empty");
-                }
+					System.out.println("Dialogs: Empty");
+				}
 			}
 		}
+	}
+	public boolean crystalCheck(){
+		for(int i = 0; i < inventory.length; i++){
+			if(inventory[i] != null && inventory[i].getName().equals("magic crystal"))
+				return true;
+		}
+		return false;
 	}
 }
 
