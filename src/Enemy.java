@@ -4,7 +4,7 @@ public class Enemy extends Character
 				int mana, int strength, int defense, int speed, 
 				String status, String attack0, String attack1, String attack2)
 	{
-		super(name, role);
+		super(name,role);
 		
 		this.setName(name);
 		this.setRole(role);
@@ -22,4 +22,6 @@ public class Enemy extends Character
 		String[] attacks = {attack0,attack1,attack2};
 		if(attacks[0]!=null && attacks[1]!=null && attacks[2]!=null){ this.setAttacks(attacks); }
 	}
+	
+	
 }

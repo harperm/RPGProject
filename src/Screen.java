@@ -82,7 +82,7 @@ public class Screen extends JFrame implements ActionListener
 	public static void main(String[] args)
 	{
 		Map test = new Map(7,5);
-		Character player = new Character("test","warrior");
-		new Screen(player,test);
+		//Character player = new Character("test","warrior");
+		//new Screen(player,test);
 	}
 }
