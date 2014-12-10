@@ -180,12 +180,12 @@ public class RPGTest
 		      line3 = line3.substring(line3.indexOf(",") + 1, line3.length());
 		     }
       	   }
-		     NPC temp  = new NPC(T3.get(0), T3.get(1),T3.get(2), T3.get(3),T3.get(4),T3.get(5), null);
-		     NPC temp1 = new NPC(T3.get(6), T3.get(7),T3.get(8), T3.get(9),T3.get(10),T3.get(11), null);
-		     NPC temp2 = new NPC(T3.get(12), T3.get(13),T3.get(14), T3.get(15),T3.get(16),T3.get(17), null);
+		     NPC temp  = new NPC(T3.get(0), T3.get(1),T3.get(2), T3.get(3),T3.get(4),T3.get(5), null, false);
+		     NPC temp1 = new NPC(T3.get(6), T3.get(7),T3.get(8), T3.get(9),T3.get(10),T3.get(11), null, false);
+		     NPC temp2 = new NPC(T3.get(12), T3.get(13),T3.get(14), T3.get(15),T3.get(16),T3.get(17), null, true);
 		     
-		     int posX= 5,posX1=4, posX2=10;
-		     int posY=0,posY1=1, posY2= 7;
+		     int posX= 5,posX1=4, posX2=10;  //10
+		     int posY=0,posY1=1, posY2= 7;	//7
 		  
 		    if(map.validPosition(posX,posY) == true)
 		     {
@@ -222,8 +222,8 @@ public class RPGTest
       	   }
 		     Item temp = new Item(T4.get(0));
 		     
-		    int posX = 13;
-		    int posY = 7;
+		    int posX = 13;	//13
+		    int posY = 7;	//7
 		    if(map.validPosition(posX,posY) == true)
 		     {
 		      map.place(temp, posX, posY);
