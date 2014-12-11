@@ -121,32 +121,9 @@ public class Equipment
             player.getEquipped()[slot].unequip(player);
         }
         
-        //player.setChestItem(this, i);
         player.setEquippedItem(this, slot);
         System.out.println(this.getName()+" equipped");
         System.out.println();
-        
-        /*
-		for(int i=0;i<player.getEquipped().length;i++){
-			if(player.getEquipped()[i]==null){
-				player.setEquippedItem(this, i);
-				System.out.println(player.getEquipped()[i].getName()+" equipped");
-				System.out.println();
-				break;
-			}else{
-				if(player.getEquipped()[i].getType().equals(this.getType())){
-					System.out.println(this.getName()+" not equipped: Slot is full");
-					System.out.println();
-					break;
-				}
-			}			
-			
-			if(i==player.getEquipped().length && player.getEquipped()[i]==null){
-				System.out.println("Sorry, there is no room for that");
-				System.out.println();
-			}
-		}
-		*/
 	}
 	
 	public void unequip(Character player)

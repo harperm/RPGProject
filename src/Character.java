@@ -154,12 +154,6 @@ public class Character
 				System.out.println("Inventory"+i+": "+this.getInventory()[i].getName()+"("+this.getItemCount()[i]+")");
 			}
 		}
-
-
-
-
-
-
 	}
 
 	public void printEquipped()

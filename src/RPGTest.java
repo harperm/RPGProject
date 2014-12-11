@@ -63,14 +63,28 @@ public class RPGTest
 		NPC npc0 = new NPC("grand wizard","npc","hello","welcome, adventurer","i am here to guide you","start of by finding the magic crystal",null);
 		NPC npc1 = new NPC("grand wizard", "npc" ,"to complete this quest you must","bring the magic crystal ","to the emperor",null,null);
 		NPC npc2 = new NPC("emperor", "npc","You found me!","and you have the magic cyrstal",null,null,null);
-		
+		*/
 		// Placed these randomly through an imported text file
 		Equipment sword0 = new Equipment("rookie blade","weapon","strength",10);
 		Equipment sword1 = new Equipment("test blade","weapon","strength",5);
 		Equipment sword2 = new Equipment("ironforge blade","weapon","strength",20);
-		Equipment helm0 = new Equipment("bronze helmet","head","defese",5);
-		Equipment helm1 = new Equipment("iron helmet","head","defese",15);
+		Equipment helm0 = new Equipment("bronze helmet","head","defense",5);
+		Equipment helm1 = new Equipment("iron helmet","head","defense",15);
 		
+		map.place(sword0,4,0);
+		map.place(sword1,3,0);
+		map.place(sword2,2,0);
+		map.place(helm0,1,0);
+		map.place(helm1,0,0);
+		
+		sword0.add(player);
+		//sword0.equip(player);
+		sword1.add(player);
+		sword1.equip(player);
+		helm0.add(player);
+		//helm0.equip(player);
+		
+		/*
 		* Placed these randomly through an imported text file
 		Potion smallHealth = new Potion("small health potion","health",10);
 		Potion smallStamina = new Potion("small stamina potion", "health", 15);
