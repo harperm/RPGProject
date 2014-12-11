@@ -1,5 +1,5 @@
-rookie blade,weapon,strength,10
-test blade,weapon,strength,5
-ironforge blade,weapon,strength,20
-bronze helmet,head,defese,5
-iron helmet,head,defese,15
+rookie blade,weapon,strength,10,4,0
+test blade,weapon,strength,5,2,0
+ironforge blade,weapon,strength,20,1,0
+bronze helmet,head,defese,5,5,3
+iron helmet,head,defese,15,2,1

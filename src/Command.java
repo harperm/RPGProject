@@ -3,16 +3,12 @@ import java.util.Scanner;
 public class Command
 {
 	Scanner keyboard = new Scanner(System.in);
-	private Character player;
-	private Map map;
 	
 	public Command(Character player, Map map, String command)
 	{
 		command.toLowerCase();
-		if(command.equals("up")){ map.move(player,"up"); }
-		else if(command.equals("left")){ map.move(player,"left"); }
-		else if(command.equals("down")){ map.move(player,"down"); }
-		else if(command.equals("right")){ map.move(player,"right"); }
+		if(command.equals("up")||command.equals("down")||command.equals("right")||
+			command.equals("left")){ map.move(player,command); }
 		else if(command.equals("me")){ player.printCharacter(); }
 		else if(command.equals("inventory")){ player.printInventory(); }
 		else if(command.equals("equipped")){ player.printEquipped(); }
@@ -22,6 +18,12 @@ public class Command
 		else if(command.equals("equip")){ equip(player); }
 		else if(command.equals("unequip")){ unequip(player); }
 		else{ System.out.println("Error: Command not valid"); }
+	}
+	
+	public void move(Character player, Map map, String move)
+	{
+		map.move(player,move);
+		map.printMap(player);
 	}
 	
 	public void use(Character player)

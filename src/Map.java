@@ -9,28 +9,7 @@ public class Map
 	private Equipment[][] equipmentMap;
 	private Enemy[][] enemyMap;
 	private NPC[][] NPCMap;
-
-	public void printMap(Character player)
-	{
-		String map = "";
-		for(int i=0;i<mapX;i++){ map += "##"; }
-		map += "###\n";
-		for(int i=mapY-1;i>=0;i--){
-			map += "#";
-			for(int j=mapX-1;j>=0;j--){
-				map+= '|';
-				if(player.getPositionX()==j&&player.getPositionY()==i){ map += "P"; }
-				else if(getCharMap()[i][j]!=' '){ map+= getCharMap()[i][j]; }
-				else{ map += " "; }
-			}
-			map += "|#\n";
-			for(int j=mapX-1;j>=0;j--){ map += "##"; }
-			map += "###\n";
-		}
-		System.out.println();
-		System.out.println(map);
-	}
-
+	
 	public Map(int mapX, int mapY)
 	{
 		this.mapX = mapX;
@@ -110,7 +89,7 @@ public class Map
 			for(int i=0;i<this.NPCMap[x][y].getDialogs().length;i++){
 				if(this.NPCMap[x][y].getDialogs()[i]!=null){
 					if(this.NPCMap[x][y].getIsEmperor() && player.crystalCheck()){			
-						System.out.println("Congratulations, you have found me and brought me the magic crystal!");
+						System.out.println("Congratulations, you have found me and brought the magic crystal!");
 						System.out.println("You have won the game!");
 						System.exit(0);
 					}
@@ -146,24 +125,47 @@ public class Map
 		else if(move.equals("right")&&x-1>=0){ x-=1; }
 		else{
 			System.out.println("Error: Cannot move "+move+" from here");
+			System.out.println("("+x+","+y+")");
 			System.out.println();
 			return;
 		}
 		
-		if(!validPosition(x,y)){
+		if(!validPosition(player,x,y)){
 			System.out.println("Error: Cannot move "+move+" from here");
+			System.out.println("("+x+","+y+")");
 			System.out.println();
 			return;
 		}
 		
 		player.setPositionX(x);
 		player.setPositionY(y);
-		printMap(player);
 		checkCollision(player);
 	}
 
-	public boolean validPosition(int x, int y){
-		if((charMap[y][x] == '/' || charMap[y][x] == '~')){	return false; }
+	public boolean validPosition(Character player, int x, int y){
+		if((charMap[y][x] == '/' || charMap[y][x] == '~') ||
+			(x==player.getPositionX() && y==player.getPositionY())){	return false; }
 		else{ return true; }
+	}
+	
+	public void printMap(Character player)
+	{
+		String map = "";
+		for(int i=0;i<mapX;i++){ map += "##"; }
+		map += "###\n";
+		for(int i=mapY-1;i>=0;i--){
+			map += "#";
+			for(int j=mapX-1;j>=0;j--){
+				map+= '|';
+				if(player.getPositionX()==j&&player.getPositionY()==i){ map += "P"; }
+				else if(getCharMap()[i][j]!=' '){ map+= getCharMap()[i][j]; }
+				else{ map += " "; }
+			}
+			map += "|#\n";
+			for(int j=mapX-1;j>=0;j--){ map += "##"; }
+			map += "###\n";
+		}
+		System.out.println();
+		System.out.println(map);
 	}
 }

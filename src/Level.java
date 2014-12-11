@@ -6,11 +6,13 @@ import java.io.IOException;
 
 public class Level
 {	
+	private Character player;
 	private Map map;
 	
-	public Level(String mapName, String enemiesFile, String equipmentFile,
+	public Level(Character player, String mapName, String enemiesFile, String equipmentFile,
 			String potionsFile, String questItemsFile, String NPCFile) throws IOException
 	{
+		this.player = player;
 		this.map = importMap(mapName);
 		importEnemies(enemiesFile);
 		importNPCs(NPCFile);
@@ -20,7 +22,6 @@ public class Level
 	}
 	
 	public void setMap(Map newMap){ this.map = newMap; }
-	
 	public Map getMap(){ return this.map; }
 	
 	public static void main(String[] args) throws IOException
@@ -32,7 +33,7 @@ public class Level
 		String potionsFile = "PotionObjects.txt";
 		String questItemsFile = "ItemQuestObjects.txt";
 		String NPCFile = "NPCObjects.txt";
-		Level level0 = new Level(mapFile, enemiesFile, equipmentFile, potionsFile, questItemsFile, NPCFile);
+		Level level0 = new Level(player, mapFile, enemiesFile, equipmentFile, potionsFile, questItemsFile, NPCFile);
 		
 		Map map = level0.map;
 		map.printMap(player);
@@ -45,7 +46,7 @@ public class Level
 		
 		x = count.readLine().length();
 		while(count.readLine()!=null){ y++; }
-		System.out.println(x+","+y);
+		System.out.println("Map: "+x+","+y);
 		count.close();
 		
 		BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -106,6 +107,12 @@ public class Level
 			}
 		}
 		
+		for(int i=0;i<T.size();i++){
+			if(T.get(i).equals("null")){
+				T.set(i,null);
+			}
+		}
+		
 		return T;
 	}
 	
@@ -115,24 +122,16 @@ public class Level
 		String line = null;
 		while((line = reader.readLine()) != null){
 			ArrayList<String> T = readConstructor(line);
-		  
+			
 	        Enemy temp = new Enemy(T.get(0),T.get(1),Integer.parseInt(T.get(2)),Integer.parseInt(T.get(3)),
 	        		  Integer.parseInt(T.get(4)),Integer.parseInt(T.get(5)),Integer.parseInt(T.get(6)),
-	        		  Integer.parseInt(T.get(7)),null,null,null,null);
+	        		  Integer.parseInt(T.get(7)),T.get(8),T.get(9),T.get(10),T.get(11));
 
 		  
 			Random n = new Random();
-			while(true){
-				int posX = n.nextInt(this.map.getMapX());
-				int posY = n.nextInt(this.map.getMapY());
-		  
-				if(this.map.validPosition(posX,posY) == true){
-					this.map.place(temp, posX, posY);
-					System.out.println("Enemy: ");
-					System.out.println("x: " + posX + "  y: " + posY); // used only to see where the enemys actually are 
-					break;
-				}
-			}
+			int posX = n.nextInt(this.map.getMapX());
+			int posY = n.nextInt(this.map.getMapY());
+			place(temp,posX,posY);
 		}
 		reader.close();
 	}
@@ -144,21 +143,13 @@ public class Level
 		while((line = reader.readLine()) != null){
 			ArrayList<String> T = readConstructor(line);
 		   
-			NPC temp  = new NPC(T.get(0), T.get(1),T.get(2), T.get(3),T.get(4),T.get(5), null, false,Integer.parseInt(T.get(6)),Integer.parseInt(T.get(7)));
-		    NPC temp1 = new NPC(T.get(8), T.get(9),T.get(10), T.get(11),T.get(12),T.get(13), null, false,Integer.parseInt(T.get(14)),Integer.parseInt(T.get(15)));
-		    NPC temp2 = new NPC(T.get(16), T.get(17),T.get(18), T.get(19),T.get(20),T.get(21), null, false,Integer.parseInt(T.get(22)),Integer.parseInt(T.get(23)));
-		   
-		    int posX=Integer.parseInt(T.get(6)),posX1=Integer.parseInt(T.get(14)), posX2=Integer.parseInt(T.get(22));  //10
-		    int posY=Integer.parseInt(T.get(7)),posY1=Integer.parseInt(T.get(15)), posY2= Integer.parseInt(T.get(23));	//10
-		  
-		    if(map.validPosition(posX,posY) == true){
-		    	map.place(temp, posX, posY);
-		    	map.place(temp1, posX1, posY1);
-		    	map.place(temp2, posX2, posY2);
-		    	System.out.println("NPC: ");
-		    	System.out.println("x: " + posX + "  y: " + posY); // used only to see where NPC actually are placed
-		    	break;
-		    }
+			NPC temp  = new NPC(T.get(0), T.get(1),T.get(2), T.get(3),T.get(4),T.get(5),T.get(6),
+					Boolean.parseBoolean(T.get(7)),Integer.parseInt(T.get(8)),Integer.parseInt(T.get(9)));
+			
+		    int posX=Integer.parseInt(T.get(8));
+		    int posY=Integer.parseInt(T.get(9));
+		    
+		    place(temp,posX,posY);
 		}
 		reader.close();
 	}
@@ -170,21 +161,12 @@ public class Level
 		while((line = reader.readLine()) != null){
 			ArrayList<String> T = readConstructor(line);
 			
-			Equipment temp = new Equipment(T.get(0), T.get(1), T.get(2), Integer.parseInt(T.get(3)));
+			Equipment temp = new Equipment(T.get(0),T.get(1),T.get(2),Integer.parseInt(T.get(3)));
 			  
-			Random n1 = new Random();
-			while(true){ 
-				int posX = n1.nextInt(this.map.getMapX());
-			    int posY = n1.nextInt(this.map.getMapY());
-			  
-			    if(this.map.validPosition(posX,posY) == true){
-			    	this.map.place(temp, posX, posY);
-			    	System.out.println("Equipment: ");
-			    	System.out.println("x: " + posX + "  y: " + posY);
-			    	// used only to see where the equipment actually are 
-			    	break;
-			    }
-			}
+			int posX=Integer.parseInt(T.get(4));
+			int posY=Integer.parseInt(T.get(5));
+			 
+			place(temp,posX,posY);
 		}
 		reader.close();
 	}
@@ -198,18 +180,12 @@ public class Level
 		    
 			Potion temp = new Potion(T.get(0), T.get(1), Integer.parseInt(T.get(2)));
 		  
-			Random n2 = new Random();
-			while(true){ 
-				int posX = n2.nextInt(21);
-				int posY = n2.nextInt(11);
-				
-			    if(map.validPosition(posX,posY) == true){
-			    	map.place(temp, posX, posY);
-			    	System.out.println("Potion: ");
-			    	System.out.println("x: " + posX + "  y: " + posY); // used only to see where potions actually are placed
-			    	break;
-			    }
-			}
+			Random n = new Random();
+			
+			int posX = n.nextInt(21);
+			int posY = n.nextInt(11);
+			
+			place(temp,posX,posY);
 		}
 		reader.close();
 	}
@@ -225,13 +201,32 @@ public class Level
 	     
 			int posX = Integer.parseInt(T.get(1));	
 			int posY = Integer.parseInt(T.get(2));	
-		    if(map.validPosition(posX,posY) == true){
-		    	map.place(temp, posX, posY);
-		    	System.out.println("Crystal: ");
-		    	System.out.println("x: " + posX + "  y: " + posY); // used only to see where the cyrstal is actually placed
-		    	break;
-		    }
+			place(temp,posX,posY);
 		}
 		reader.close();
+	}
+	
+	public void place(Object object, int x, int y)
+	{
+		while(true){
+			if(this.map.validPosition(this.player,x,y) == true){
+				this.map.place(object, x, y);
+				
+				//prints objects and locations
+				String name = "";
+				
+				if(object instanceof Character){
+					name = ((Character) object).getName();
+				}else if(object instanceof Equipment){
+					name = ((Equipment) object).getName();
+				}else if(object instanceof Item){
+					name = ((Item) object).getName();
+				}
+				
+				System.out.println(name+": "+x+","+y);
+				//
+			}
+			break;
+		}
 	}
 }
