@@ -47,6 +47,7 @@ public class RPGTest
 
 		Map map = level0.getMap();
 		Character player = new Character("lonk","warrior");
+		//Enemy enemy0 = new Enemy("Orc","warrior",1,80,150,0,80,60,null,null,null,null);
 		//Character player1 = new Character("bob","mage");
 		//Character player2 = new Character("zio","thief");
 
@@ -121,21 +122,6 @@ public class RPGTest
 		
 		map.checkCollision(player);
 		
-	
-		
-		while(true)
-		{
-			System.out.print("Command: ");
-			String command = keyboard.next();
-			if(command.equals("exit")){
-				break;
-			}else{
-				System.out.println();
-				new Command(player,map,command);
-			}
-		}
-		
-		
 		/*
 		map.move(player, "up");
 		map.move(player, "left");
@@ -153,6 +139,23 @@ public class RPGTest
 		map.move(player, "right");
 		map.move(player, "down");
 		*/
+		
+		while(true)
+		{
+			System.out.print("Command: ");
+			String command = keyboard.next();
+			if(command.equals("exit")){
+				break;
+			}else{
+				System.out.println();
+				new Command(player,map,command);
+			}
+		}
+		
+		
+		
+		
+		
 		
 		keyboard.close();
 		

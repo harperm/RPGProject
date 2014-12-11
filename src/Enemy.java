@@ -22,6 +22,5 @@ public class Enemy extends Character
 		String[] attacks = {attack0,attack1,attack2};
 		if(attacks[0]!=null && attacks[1]!=null && attacks[2]!=null){ this.setAttacks(attacks); }
 	}
-	
-	
+
 }
