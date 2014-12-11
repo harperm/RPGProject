@@ -19,6 +19,18 @@ public class Character
 	//player
 	public Character(String name, String role)
 	{
+		setStats(name, role);
+	}
+	
+	public Character(String name, String role, int x, int y)
+	{
+		setStats(name, role);
+		this.setPositionX(x);
+		this.setPositionY(y);
+	}
+	
+	public void setStats(String name, String role)
+	{
 		this.name = name;
 		this.role = role;
 		this.level = 1;
@@ -55,7 +67,7 @@ public class Character
 			this.attacks[1] = "throw";
 			this.attacks[2] = "stab";
 		}
-
+		
 		this.mana = maxMana;
 		this.status = null;
 		this.money = 0;
