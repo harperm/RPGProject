@@ -6,9 +6,9 @@ public class Item
 	private NPC npc;
 	
 	//quest item
-	public Item(String name, NPC npc){
+	public Item(String name, int xVal, int yVal){
 		this.name = name;
-		this.npc = npc;
+		//this.npc = npc;
 	}
 	
 	//misc item

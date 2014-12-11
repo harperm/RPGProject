@@ -1,1 +1,1 @@
-magic crystal,npc2
+magic crystal,13,7

@@ -144,12 +144,12 @@ public class Level
 		while((line = reader.readLine()) != null){
 			ArrayList<String> T = readConstructor(line);
 		   
-			NPC temp  = new NPC(T.get(0), T.get(1),T.get(2), T.get(3),T.get(4),T.get(5), null, false);
-		    NPC temp1 = new NPC(T.get(6), T.get(7),T.get(8), T.get(9),T.get(10),T.get(11), null, false);
-		    NPC temp2 = new NPC(T.get(12), T.get(13),T.get(14), T.get(15),T.get(16),T.get(17), null, true);
-		     
-		    int posX= 5,posX1=4, posX2=10;  //10
-		    int posY=0,posY1=1, posY2= 10;	//10
+			NPC temp  = new NPC(T.get(0), T.get(1),T.get(2), T.get(3),T.get(4),T.get(5), null, false,Integer.parseInt(T.get(6)),Integer.parseInt(T.get(7)));
+		    NPC temp1 = new NPC(T.get(8), T.get(9),T.get(10), T.get(11),T.get(12),T.get(13), null, false,Integer.parseInt(T.get(14)),Integer.parseInt(T.get(15)));
+		    NPC temp2 = new NPC(T.get(16), T.get(17),T.get(18), T.get(19),T.get(20),T.get(21), null, false,Integer.parseInt(T.get(22)),Integer.parseInt(T.get(23)));
+		   
+		    int posX=Integer.parseInt(T.get(6)),posX1=Integer.parseInt(T.get(14)), posX2=Integer.parseInt(T.get(22));  //10
+		    int posY=Integer.parseInt(T.get(7)),posY1=Integer.parseInt(T.get(15)), posY2= Integer.parseInt(T.get(23));	//10
 		  
 		    if(map.validPosition(posX,posY) == true){
 		    	map.place(temp, posX, posY);
@@ -221,10 +221,10 @@ public class Level
 		while((line = reader.readLine()) != null){
 			ArrayList<String> T = readConstructor(line);
 			
-			Item temp = new Item(T.get(0));
+			Item temp = new Item(T.get(0),Integer.parseInt(T.get(1)),Integer.parseInt(T.get(2)));
 	     
-			int posX = 13;	//13
-			int posY = 7;	//7
+			int posX = Integer.parseInt(T.get(1));	
+			int posY = Integer.parseInt(T.get(2));	
 		    if(map.validPosition(posX,posY) == true){
 		    	map.place(temp, posX, posY);
 		    	System.out.println("Crystal: ");
