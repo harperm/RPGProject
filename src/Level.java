@@ -187,7 +187,6 @@ public class Level
 			int posY = n.nextInt(11);
 			
 			place(temp,posX,posY);
-			System.out.println(posX+","+posY);
 		}
 		reader.close();
 	}

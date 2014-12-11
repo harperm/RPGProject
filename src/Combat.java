@@ -43,8 +43,9 @@ public class Combat
 			
 			do{
 				if(choice>attacks.length || choice<0){ System.out.println("Error: Not a valid attack"); }
-				System.out.print("Enter attack number: \n");
+				System.out.print("Enter attack number: ");
 				choice = keyboard.nextInt();
+				System.out.println();
 			}while(choice>attacks.length || choice<0);
 		}
 		

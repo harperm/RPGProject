@@ -323,9 +323,6 @@ public class RPGTest
 		testMove(player0,map0,"right",0,0); System.out.println();
 		System.out.println();
 		
-		
-		
-		/*
 		System.out.println("Import Level Test");
 		String mapFile = "Level0.txt";
 		String enemiesFile = "EnemyObjects.txt";
@@ -334,30 +331,26 @@ public class RPGTest
 		String questItemsFile = "QuestItemObjects.txt";
 		String NPCFile = "NPCObjects.txt";
 		Level level0 = new Level(player0,mapFile, enemiesFile, equipmentFile, potionsFile, questItemsFile, NPCFile);
-		*/
-		//Map map = level0.getMap();
 		
-		//player.printCharacter();
+		Map importedMap = level0.getMap();
+		importedMap.printMap(player0);
 		
-		//map.printMap(player);
-		//map.checkCollision(player);
+		importedMap.move(player0,"down"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"right"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"up"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"up"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"up"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"left"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"left"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"left"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"left"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"up"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"left"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"left"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"up"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"up"); importedMap.checkCollision(player0);
+		importedMap.move(player0,"left"); importedMap.checkCollision(player0);
 		
-		/*
-		map.move(player,"down");
-		map.move(player,"right");
-		map.move(player,"up");
-		map.move(player,"up");
-		map.move(player,"up");
-		map.move(player,"left");
-		map.move(player,"left");
-		map.move(player,"left");
-		map.move(player,"left");
-		map.move(player,"up");
-		map.move(player,"left");
-		map.move(player,"left");
-		map.move(player,"up");
-		map.move(player,"up");
-		map.move(player,"left");
-		/*/
+		importedMap.printMap(player0);
 	}
 }
