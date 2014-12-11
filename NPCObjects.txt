@@ -1,3 +1,3 @@
-grand wizard,npc,hello,welcome adventurer,i am here to guide you,start of by finding the magic crystal,null,false,5,0
-grand wizard,npc,you much complete a quest to win the game,to complete this quest you must,bring the magic crystal ,to the emperor,null,false,4,1
-emperor,npc,I'm sorry,you may have found me,but you must have the magic crystal first,come find me again when you do!,null,true,10,10
+grand wizard,hello,welcome adventurer,i am here to guide you,start of by finding the magic crystal,null,false,5,0
+grand wizard,you much complete a quest to win the game,to complete this quest you must,bring the magic crystal ,to the emperor,null,false,4,1
+emperor,I'm sorry,you may have found me,but you must have the magic crystal first,come find me again when you do!,null,true,10,10

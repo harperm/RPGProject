@@ -14,7 +14,7 @@ public class Map
 	{
 		this.mapX = mapX;
 		this.mapY = mapY;
-		this.charMap = new char[mapX][mapY];
+		this.charMap = new char[mapY][mapX];
 		this.stringMap = new String[mapX][mapY];
 		this.itemMap = new Item[mapX][mapY];
 		this.equipmentMap = new Equipment[mapX][mapY];
@@ -77,7 +77,8 @@ public class Map
 			System.out.println("A "+this.enemyMap[x][y].getRole()+" "+this.enemyMap[x][y].getName()+" has appeared!");
 			System.out.println();
 
-			new Combat(player,this.enemyMap[x][y]);
+			Combat battle = new Combat();
+			battle.fight(player,this.enemyMap[x][y]);
 			this.enemyMap[x][y]=null;
 
 			printMap(player);
@@ -139,13 +140,15 @@ public class Map
 		
 		player.setPositionX(x);
 		player.setPositionY(y);
-		checkCollision(player);
 	}
 
 	public boolean validPosition(Character player, int x, int y){
 		if((charMap[y][x] == '/' || charMap[y][x] == '~') ||
-			(x==player.getPositionX() && y==player.getPositionY())){	return false; }
-		else{ return true; }
+			(x==player.getPositionX() && y==player.getPositionY())){
+			return false;
+		}else{
+			return true;
+		}
 	}
 	
 	public void printMap(Character player)

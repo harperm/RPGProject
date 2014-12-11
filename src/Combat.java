@@ -7,7 +7,7 @@ public class Combat
 	static Scanner keyboard = new Scanner(System.in);
 	static Random rand = new Random();
 	
-	public Combat(Character player, Enemy enemy)
+	public void fight(Character player, Enemy enemy)
 	{
 		printHPs(player, enemy);
 		
@@ -36,24 +36,15 @@ public class Combat
 	public void attack(Character attacker, Character target)
 	{
 		int choice = 0;
-		
-		if(!this.turn){
-			choice = rand.nextInt(3)+1;
-		}else{
+		if(!this.turn){ choice = rand.nextInt(3)+1; }
+		else{
 			String[] attacks = attacker.getAttacks();
-			
-			for(int i=0;i<attacks.length;i++){
-				System.out.println((i+1)+". "+attacks[i]);
-			}
+			for(int i=0;i<attacks.length;i++){ System.out.println((i+1)+". "+attacks[i]); }
 			
 			do{
-				if(choice>attacks.length || choice<0){
-					System.out.println("Error: Not a valid attack");
-				}
-				
-				System.out.print("Enter attack number: ");
+				if(choice>attacks.length || choice<0){ System.out.println("Error: Not a valid attack"); }
+				System.out.print("Enter attack number: \n");
 				choice = keyboard.nextInt();
-				System.out.println();
 			}while(choice>attacks.length || choice<0);
 		}
 		

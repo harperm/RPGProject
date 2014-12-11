@@ -123,6 +123,36 @@ public class Equipment
         
         player.setEquippedItem(this, slot);
         System.out.println(this.getName()+" equipped");
+        
+        if(this.stat0!=null){
+			if(this.stat0.equals("health")){ player.setMaxHealth(player.getMaxHealth()+this.effect0); }
+			else if(this.stat0.equals("mana")){ player.setMaxMana(player.getMaxMana()+this.effect0); }
+			else if(this.stat0.equals("strength")){ player.setStrength(player.getStrength()+this.effect0); }
+			else if(this.stat0.equals("defense")){ player.setDefense(player.getDefense()+this.effect0); }
+			else if(this.stat0.equals("speed")){ player.setSpeed(player.getSpeed()+this.effect0); }
+			else{ System.out.println("Stat "+this.stat0+" not found"); return; }
+			System.out.println(this.stat0+" changed by "+this.effect0);
+        }
+        
+        if(this.stat1!=null){
+			if(this.stat1.equals("health")){ player.setMaxHealth(player.getMaxHealth()+this.effect1); }
+			else if(this.stat1.equals("mana")){ player.setMaxMana(player.getMaxMana()+this.effect1); }
+			else if(this.stat1.equals("strength")){ player.setStrength(player.getStrength()+this.effect1); }
+			else if(this.stat1.equals("defense")){ player.setDefense(player.getDefense()+this.effect1); }
+			else if(this.stat1.equals("speed")){ player.setSpeed(player.getSpeed()+this.effect1); }
+			else{ System.out.println("Stat "+this.stat1+" not found"); return; }
+			System.out.println(this.stat1+" changed by "+this.effect1);
+        }
+        
+        if(this.stat2!=null){
+			if(this.stat2.equals("health")){ player.setMaxHealth(player.getMaxHealth()+this.effect2); }
+			else if(this.stat2.equals("mana")){ player.setMaxMana(player.getMaxMana()+this.effect2); }
+			else if(this.stat2.equals("strength")){ player.setStrength(player.getStrength()+this.effect2); }
+			else if(this.stat2.equals("defense")){ player.setDefense(player.getDefense()+this.effect2); }
+			else if(this.stat2.equals("speed")){ player.setSpeed(player.getSpeed()+this.effect2); }
+			else{ System.out.println("Stat "+this.stat2+" not found"); return; }
+			System.out.println(this.stat2+" changed by "+this.effect2);
+        }
         System.out.println();
 	}
 	
@@ -133,6 +163,37 @@ public class Equipment
 				if(player.getEquipped()[i].getName()==this.getName()){
 					player.setEquippedItem(null, i);
 					System.out.println(this.getName()+" unequipped");
+					
+					if(this.stat0!=null){
+						if(this.stat0.equals("health")){ player.setMaxHealth(player.getMaxHealth()-this.effect0); }
+						else if(this.stat0.equals("mana")){ player.setMaxMana(player.getMaxMana()-this.effect0); }
+						else if(this.stat0.equals("strength")){ player.setStrength(player.getStrength()-this.effect0); }
+						else if(this.stat0.equals("defense")){ player.setDefense(player.getDefense()-this.effect0); }
+						else if(this.stat0.equals("speed")){ player.setSpeed(player.getSpeed()-this.effect0); }
+						else{ System.out.println("Stat "+this.stat0+" not found"); return; }
+						System.out.println(this.stat0+" changed by "+this.effect0);
+			        }
+			        
+			        if(this.stat1!=null){
+						if(this.stat1.equals("health")){ player.setMaxHealth(player.getMaxHealth()-this.effect1); }
+						else if(this.stat1.equals("mana")){ player.setMaxMana(player.getMaxMana()-this.effect1); }
+						else if(this.stat1.equals("strength")){ player.setStrength(player.getStrength()-this.effect1); }
+						else if(this.stat1.equals("defense")){ player.setDefense(player.getDefense()-this.effect1); }
+						else if(this.stat1.equals("speed")){ player.setSpeed(player.getSpeed()-this.effect1); }
+						else{ System.out.println("Stat "+this.stat1+" not found"); return; }
+						System.out.println(this.stat1+" changed by "+this.effect1);
+			        }
+			        
+			        if(this.stat2!=null){
+						if(this.stat2.equals("health")){ player.setMaxHealth(player.getMaxHealth()-this.effect2); }
+						else if(this.stat2.equals("mana")){ player.setMaxMana(player.getMaxMana()-this.effect2); }
+						else if(this.stat2.equals("strength")){ player.setStrength(player.getStrength()-this.effect2); }
+						else if(this.stat2.equals("defense")){ player.setDefense(player.getDefense()-this.effect2); }
+						else if(this.stat2.equals("speed")){ player.setSpeed(player.getSpeed()-this.effect2); }
+						else{ System.out.println("Stat "+this.stat2+" not found"); return; }
+						System.out.println(this.stat2+" changed by "+this.effect2);
+			        }
+					
 					break;
 				}
 			}

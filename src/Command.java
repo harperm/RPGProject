@@ -8,7 +8,7 @@ public class Command
 	{
 		command.toLowerCase();
 		if(command.equals("up")||command.equals("down")||command.equals("right")||
-			command.equals("left")){ map.move(player,command); }
+			command.equals("left")){ move(player,map,command); }
 		else if(command.equals("me")){ player.printCharacter(); }
 		else if(command.equals("inventory")){ player.printInventory(); }
 		else if(command.equals("equipped")){ player.printEquipped(); }
@@ -24,6 +24,7 @@ public class Command
 	{
 		map.move(player,move);
 		map.printMap(player);
+		map.checkCollision(player);
 	}
 	
 	public void use(Character player)

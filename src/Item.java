@@ -2,30 +2,23 @@ public class Item
 {
 	private String name;
 	private String stat;
-	private int restore;
+	private int heal;
 	private NPC npc;
 	
-	//quest item
-	public Item(String name, int xVal, int yVal){
-		this.name = name;
-		//this.npc = npc;
-	}
 	
 	//misc item
-	public Item(String name){
-		this.name = name;
-	}
+	public Item(String name){ this.name = name; }
 	
 	//setters
 	public void setName(String newName){ this.name = newName; }
 	public void setStat(String newStat){ this.stat = newStat; }
-	public void setHeal(int newRestore){ this.restore = newRestore; }
+	public void setHeal(int newHeal){ this.heal = newHeal; }
 	public void setNPC(NPC newNPC){ this.npc = newNPC; }
 	
 	//getters
 	public String getName(){ return this.name; }
 	public String getStat(){ return this.stat; }
-	public int getRestore(){ return this.restore; }
+	public int getHeal(){ return this.heal; }
 	public NPC getNPC(){ return this.npc; }
 	
 	public void add(Character player)
@@ -63,7 +56,7 @@ public class Item
 	{
 		System.out.println("Name: "+this.getName());
 		System.out.println("Stat: "+this.getStat());
-		System.out.println("Restores: "+this.getRestore());
+		System.out.println("Heals: "+this.getHeal());
 		System.out.println("NPC: "+this.getNPC());
 		System.out.println();
 		System.out.println();

@@ -1,8 +1,8 @@
 public class NPC extends Character
 {
 	private boolean isEmperor;
-	public NPC(String name, String role, String dialog0, String dialog1,
-				String dialog2, String dialog3, String dialog4, boolean isEmperor, int xVal, int yVal)
+	public NPC(String name, String role, String dialog0, String dialog1, String dialog2,
+		String dialog3, String dialog4, boolean isEmperor)
 	{
 		super(name,role);
 		this.setName(name);
@@ -12,7 +12,6 @@ public class NPC extends Character
 		this.setDialogs(dialogs);
 		this.isEmperor = isEmperor;
 	}
-	public boolean getIsEmperor(){
-		return isEmperor;
-	}
+	
+	public boolean getIsEmperor(){ return isEmperor; }
 }

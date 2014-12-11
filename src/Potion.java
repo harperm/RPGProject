@@ -11,6 +11,8 @@ public class Potion extends Item
 	//uses potion
 	public void use(Character player)
 	{
+		
+		
 		for(int i=0;i<player.getInventory().length;i++){
 			//
 			if(!player.getInventory()[i].getName().equals(this.getName()) && i==player.getInventory().length-1){
@@ -31,7 +33,7 @@ public class Potion extends Item
 					}
 					
 					//restores
-					restore(player,this.getStat(),this.getRestore(),i);
+					restore(player,this.getStat(),this.getHeal(),i);
 					System.out.println();
 					break;
 			}

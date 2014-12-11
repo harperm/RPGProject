@@ -31,7 +31,7 @@ public class Level
 		String enemiesFile = "EnemyObjects.txt";
 		String equipmentFile = "EquipmentObjects.txt";
 		String potionsFile = "PotionObjects.txt";
-		String questItemsFile = "ItemQuestObjects.txt";
+		String questItemsFile = "QuestItemObjects.txt";
 		String NPCFile = "NPCObjects.txt";
 		Level level0 = new Level(player, mapFile, enemiesFile, equipmentFile, potionsFile, questItemsFile, NPCFile);
 		
@@ -46,7 +46,6 @@ public class Level
 		
 		x = count.readLine().length();
 		while(count.readLine()!=null){ y++; }
-		System.out.println("Map: "+x+","+y);
 		count.close();
 		
 		BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -110,6 +109,8 @@ public class Level
 		for(int i=0;i<T.size();i++){
 			if(T.get(i).equals("null")){
 				T.set(i,null);
+			}else if(T.get(i).equals("")){
+				
 			}
 		}
 		
@@ -125,7 +126,7 @@ public class Level
 			
 	        Enemy temp = new Enemy(T.get(0),T.get(1),Integer.parseInt(T.get(2)),Integer.parseInt(T.get(3)),
 	        		  Integer.parseInt(T.get(4)),Integer.parseInt(T.get(5)),Integer.parseInt(T.get(6)),
-	        		  Integer.parseInt(T.get(7)),T.get(8),T.get(9),T.get(10),T.get(11));
+	        		  Integer.parseInt(T.get(7)),T.get(8),T.get(9),T.get(10));
 
 		  
 			Random n = new Random();
@@ -143,11 +144,11 @@ public class Level
 		while((line = reader.readLine()) != null){
 			ArrayList<String> T = readConstructor(line);
 		   
-			NPC temp  = new NPC(T.get(0), T.get(1),T.get(2), T.get(3),T.get(4),T.get(5),T.get(6),
-					Boolean.parseBoolean(T.get(7)),Integer.parseInt(T.get(8)),Integer.parseInt(T.get(9)));
+			NPC temp  = new NPC(T.get(0), "npc" ,T.get(1), T.get(2),
+				T.get(3),T.get(4),T.get(5), Boolean.parseBoolean(T.get(6)));
 			
-		    int posX=Integer.parseInt(T.get(8));
-		    int posY=Integer.parseInt(T.get(9));
+		    int posX=Integer.parseInt(T.get(7));
+		    int posY=Integer.parseInt(T.get(8));
 		    
 		    place(temp,posX,posY);
 		}
@@ -186,6 +187,7 @@ public class Level
 			int posY = n.nextInt(11);
 			
 			place(temp,posX,posY);
+			System.out.println(posX+","+posY);
 		}
 		reader.close();
 	}
@@ -197,10 +199,10 @@ public class Level
 		while((line = reader.readLine()) != null){
 			ArrayList<String> T = readConstructor(line);
 			
-			Item temp = new Item(T.get(0),Integer.parseInt(T.get(1)),Integer.parseInt(T.get(2)));
-	     
-			int posX = Integer.parseInt(T.get(1));	
-			int posY = Integer.parseInt(T.get(2));	
+			Item temp = new Item(T.get(0));
+			
+			int posX = Integer.parseInt(T.get(2));	
+			int posY = Integer.parseInt(T.get(3));	
 			place(temp,posX,posY);
 		}
 		reader.close();
@@ -209,22 +211,8 @@ public class Level
 	public void place(Object object, int x, int y)
 	{
 		while(true){
-			if(this.map.validPosition(this.player,x,y) == true){
-				this.map.place(object, x, y);
-				
-				//prints objects and locations
-				String name = "";
-				
-				if(object instanceof Character){
-					name = ((Character) object).getName();
-				}else if(object instanceof Equipment){
-					name = ((Equipment) object).getName();
-				}else if(object instanceof Item){
-					name = ((Item) object).getName();
-				}
-				
-				System.out.println(name+": "+x+","+y);
-				//
+			if(this.map.validPosition(this.player,x,y) == true){ 
+				this.map.place(object, x, y); 
 			}
 			break;
 		}
