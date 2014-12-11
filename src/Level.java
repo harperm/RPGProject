@@ -149,7 +149,7 @@ public class Level
 		    NPC temp2 = new NPC(T.get(12), T.get(13),T.get(14), T.get(15),T.get(16),T.get(17), null, true);
 		     
 		    int posX= 5,posX1=4, posX2=10;  //10
-		    int posY=0,posY1=1, posY2= 7;	//7
+		    int posY=0,posY1=1, posY2= 10;	//10
 		  
 		    if(map.validPosition(posX,posY) == true){
 		    	map.place(temp, posX, posY);
